@@ -1,0 +1,8 @@
+ESP32 S3
+AS7341
+VEML7700
+
+Kalibracja biologiczna
+Kalibracja widma
+Pomiar lux
+Porównanie profili

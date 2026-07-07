@@ -1,0 +1,130 @@
+========================================
+RGB LED
+STATUS URZĄDZENIA SBS
+========================================
+
+ZIELONY
+
+WOLNE MRUGANIE
+- Uruchamianie urządzenia
+- Inicjalizacja systemu
+- Ładowanie konfiguracji
+
+SZYBKIE MRUGANIE
+- Łączenie z siecią WiFi
+
+ŚWIECI CIĄGLE
+- WiFi połączone
+- MQTT połączone
+- Praca normalna
+
+PODWÓJNY BŁYSK CO 5 SEKUND
+- Tryb autonomiczny
+- Praca według lokalnej konfiguracji
+
+----------------------------------------
+
+NIEBIESKI
+
+WOLNE MRUGANIE
+- Aktualizacja OTA
+
+ŚWIECI CIĄGLE
+- Tryb serwisowy
+- Diagnostyka
+
+SZYBKIE MRUGANIE
+- Tryb identyfikacji urządzenia
+
+POJEDYNCZY BŁYSK
+- Odebrano polecenie MQTT
+
+----------------------------------------
+
+CZERWONY
+
+WOLNE MRUGANIE
+- Ostrzeżenie
+
+ŚWIECI CIĄGLE
+- Awaria krytyczna
+
+SZYBKIE MRUGANIE
+- Brak połączenia WiFi
+
+BARDZO SZYBKIE MRUGANIE
+- Błąd konfiguracji
+
+----------------------------------------
+
+ŻÓŁTY
+
+KRÓTKIE BŁYSKI
+- Komunikacja MQTT
+- Odczyt czujników
+- Operacje systemowe
+
+WOLNE MRUGANIE
+- Kalibracja urządzenia
+
+ŚWIECI CIĄGLE
+- Operacja w toku
+
+----------------------------------------
+
+FIOLETOWY
+
+- Aktualizacja OTA podczas pracy online
+- Zielony + Niebieski
+
+----------------------------------------
+
+POMARAŃCZOWY
+
+- Tryb awaryjny
+- Zielony + Czerwony
+
+----------------------------------------
+
+BIAŁY
+
+- Test LED podczas uruchamiania
+- Wszystkie kanały RGB
+
+----------------------------------------
+
+CYJAN
+
+- Tryb serwisowy rozszerzony
+- Diagnostyka sprzętu
+
+========================================
+NAJCZĘSTSZE STANY
+========================================
+
+Zielony wolno mruga
+START SYSTEMU
+
+Zielony szybko mruga
+ŁĄCZENIE Z WIFI
+
+Zielony świeci
+NORMALNA PRACA
+
+Niebieski wolno mruga
+AKTUALIZACJA OTA
+
+Niebieski świeci
+TRYB SERWISOWY
+
+Czerwony wolno mruga
+OSTRZEŻENIE
+
+Czerwony świeci
+AWARIA KRYTYCZNA
+
+Pomarańczowy wolno mruga
+TRYB AWARYJNY
+
+Biały
+TEST LED PODCZAS URUCHAMIANIA

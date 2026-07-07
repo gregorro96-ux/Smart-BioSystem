@@ -1,0 +1,97 @@
+# =========================================
+# Smart BioSystem - .gitignore
+# =========================================
+
+# Kopie zapasowe
+Backups/
+*.bak
+*.backup
+
+# Logi
+Logs/
+*.log
+
+# Dane lokalne i sekrety
+.env
+.env.*
+!.env.example
+*.local
+secrets/
+credentials/
+config.local.php
+
+# Visual Studio Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.example.json
+
+# System Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+
+# Node / Vue
+node_modules/
+dist/
+build/
+.cache/
+.npm/
+.pnpm-store/
+yarn-error.log
+npm-debug.log*
+pnpm-debug.log*
+
+# PHP / Composer
+vendor/
+composer.lock
+.phpunit.result.cache
+
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+.vscode/.browse.c_cpp.db*
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/ipch/
+
+# Pliki tymczasowe
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.cache/
+
+# Testy i pokrycie
+coverage/
+test-results/
+
+# Eksporty i pliki robocze bazy
+*.sql.gz
+*.dump
+*.dump.gz
+
+# Archiwa
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+
+# Klucze i certyfikaty prywatne
+*.pem
+*.key
+*.pfx
+*.p12
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+
+# Prywatne dane dostępowe
+Docs/hasła.md
+Docs/hasla.md

@@ -1,0 +1,5 @@
+mqtt/sbs/lamp/status
+mqtt/sbs/lamp/cmd
+mqtt/sbs/lamp/telemetry
+mqtt/sbs/lamp/alarm
+mqtt/sbs/lamp/service

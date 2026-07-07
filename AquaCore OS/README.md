@@ -1,0 +1,52 @@
+﻿# AquaCore OS
+
+Minimalny rdzeń startowy systemu AquaCore OS.
+
+## Uruchomienie
+
+```powershell
+php "AquaCore OS\aquacore.php"
+```
+
+Bez podania komendy AquaCore OS pokazuje pomoc CLI.
+
+## Komendy diagnostyczne
+
+```powershell
+php "AquaCore OS\aquacore.php" help
+php "AquaCore OS\aquacore.php" system:status
+php "AquaCore OS\aquacore.php" system:version
+php "AquaCore OS\aquacore.php" system:health
+php "AquaCore OS\aquacore.php" system:boot
+php "AquaCore OS\aquacore.php" system:modules
+php "AquaCore OS\aquacore.php" config:show
+php "AquaCore OS\aquacore.php" config:validate
+php "AquaCore OS\aquacore.php" logs:status
+php "AquaCore OS\aquacore.php" database:status
+php "AquaCore OS\aquacore.php" database:test
+php "AquaCore OS\aquacore.php" mqtt:status
+php "AquaCore OS\aquacore.php" mqtt:test
+php "AquaCore OS\aquacore.php" api:status
+php "AquaCore OS\aquacore.php" security:status
+php "AquaCore OS\aquacore.php" tests:run
+```
+
+## Testy
+
+```powershell
+php "Tests\AquaCore OS\CliSmokeTest.php"
+```
+
+Albo przez AquaCore OS CLI:
+
+```powershell
+php "AquaCore OS\aquacore.php" tests:run
+```
+
+## Aktualny zakres
+
+- MariaDB nie jest jeszcze podłączona.
+- MQTT nie jest jeszcze podłączone.
+- API nie posiada publicznych endpointów.
+- Security nie posiada jeszcze logowania.
+- NAIDA pozostaje poza zakresem AquaCore OS Core.

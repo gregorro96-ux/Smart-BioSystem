@@ -1,0 +1,123 @@
+==================================================
+SBS - LISTA ZAKUPÓW (ETAP 1)
+==================================================
+
+PRZEWODY
+
+[ ] Zestaw przewodów silikonowych AWG20
+10 kolorów × 5 m
+Miedź cynowana
+Izolacja silikonowa
+(-60°C do +200°C)
+
+Kolory:
+Czerwony
+Niebieski
+Żółty
+Zielony
+Ciemnobrązowy
+Pomarańczowy
+Czarny
+Szary
+Fioletowy
+Biały
+
+Zastosowanie:
+
+PWM R          - czerwony
+PWM G          - zielony
+PWM B          - niebieski
+PWM CW         - żółty
+PWM WW         - biały
+
+DATA IN        - fioletowy
+DATA OUT       - ciemnobrązowy
+
+DS18B20
++5V            - szary
+DQ             - pomarańczowy
+GND            - czarny
+
+--------------------------------------------------
+
+[ ] Przewód silikonowy AWG16
+2×1,3 mm²
+Czerwony + Czarny
+10 m
+
++24V           - czerwony
+GND            - czarny
+
+==================================================
+ORGANIZACJA PRZEWODÓW
+==================================================
+
+[ ] Rękaw PET czarno-czerwony
+10 mm lub 13 mm
+5 m
+
+[ ] Uchwyty do opasek zaciskowych
+200 szt.
+
+[ ] Opaski zaciskowe
+
+[ ] Koszulki termokurczliwe
+
+==================================================
+USZCZELNIENIA I MONTAŻ
+==================================================
+
+[ ] Przepusty M20
+4-12 mm
+10 szt.
+
+[ ] Zestaw gumowych przelotek
+260 szt.
+8 mm
+9 mm
+10 mm
+11 mm
+14 mm
+15 mm
+17 mm
+
+[ ] Taśma piankowa dwustronna
+2 mm
+20-25 mm szerokości
+
+[ ] Podkładki nylonowe
+
+==================================================
+ELEKTRONIKA
+(NA PÓŹNIEJ)
+==================================================
+
+[ ] ESP32
+
+[ ] MOSFET IRLB3034
+
+[ ] LM2596HV
+
+[ ] Kondensatory
+
+[ ] Radiatory TO220
+
+[ ] Płytki uniwersalne
+
+[ ] Złącza JST
+
+[ ] GX20
+
+[ ] Bezpieczniki
+
+==================================================
+PIERWSZY PROJEKT SBS
+==================================================
+
+★★★★★ Pompa nawozowa
+
+Dopiero po niej:
+
+★★★★ Sterownik lampy
+
+★★★★★ Lampa nad akwarium 500 l

@@ -1,0 +1,142 @@
+﻿# AquaCore OS CLI
+
+Status: Szkielet diagnostyczny.
+
+## Punkt wejścia
+
+```powershell
+php "AquaCore OS\aquacore.php" <command>
+```
+
+Bez podania komendy uruchamiana jest pomoc CLI.
+
+## Standard komendy
+
+Każda komenda CLI posiada:
+
+- name,
+- description,
+- usage,
+- execute.
+
+## Help
+
+### help
+
+Pokazuje listę dostępnych komend, opis oraz sposób użycia.
+
+## Komendy System
+
+### system:status
+
+Pokazuje podstawowy status AquaCore OS.
+
+### system:version
+
+Pokazuje wersję AquaCore OS.
+
+### system:health
+
+Pokazuje podstawowy lokalny health check bez połączenia z bazą i MQTT.
+
+### system:boot
+
+Uruchamia aktualną sekwencję bootowania.
+
+Na tym etapie zawiera tylko krok konfiguracji.
+
+### system:modules
+
+Pokazuje status modułów:
+
+- Config,
+- Logging,
+- System,
+- Database,
+- MQTT,
+- API,
+- Security.
+
+## Komendy Config
+
+### config:show
+
+Pokazuje aktywną konfigurację systemu.
+
+Nie pokazuje haseł.
+
+### config:validate
+
+Sprawdza podstawową poprawność konfiguracji.
+
+Nie wykonuje połączeń zewnętrznych.
+
+## Komendy Logs
+
+### logs:status
+
+Sprawdza dostępność katalogu logów i pliku logu.
+
+## Komendy Database
+
+### database:status
+
+Pokazuje konfigurację warstwy Database.
+
+Nie wykonuje połączenia z MariaDB.
+
+### database:test
+
+Pokazuje gotowość szkieletu Database.
+
+Nie wykonuje połączenia z MariaDB.
+
+## Komendy MQTT
+
+### mqtt:status
+
+Pokazuje konfigurację warstwy MQTT.
+
+Nie wykonuje połączenia z brokerem.
+
+### mqtt:test
+
+Pokazuje gotowość szkieletu MQTT.
+
+Nie wykonuje połączenia z brokerem.
+
+## Komendy API
+
+### api:status
+
+Pokazuje status API.
+
+Router istnieje, ale publiczne endpointy nie są jeszcze zarejestrowane.
+
+## Komendy Security
+
+### security:status
+
+Pokazuje status modułu Security.
+
+Na tym etapie użytkownik pozostaje anonimowy, a logowanie nie jest zaimplementowane.
+
+## Komendy Tests
+
+### tests:run
+
+Uruchamia testy CLI AquaCore OS.
+
+Komenda nie jest wywoływana przez smoke test, aby uniknąć rekurencji.
+
+## Testy CLI
+
+Testy znajdują się w pliku:
+
+- Tests/AquaCore OS/CliSmokeTest.php
+
+Uruchomienie:
+
+```powershell
+php "Tests\AquaCore OS\CliSmokeTest.php"
+```
