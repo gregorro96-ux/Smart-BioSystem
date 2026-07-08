@@ -1595,6 +1595,39 @@ Jeżeli `database.configured` ma wartość `false`, komenda `database:test` koń
 
 Jeżeli `database.configured` ma wartość `true`, komenda wykonuje wyłącznie techniczny test `SELECT 1`.
 
+---
+
+## WŁĄCZENIE PDO MYSQL W PHP CLI
+
+Włączono rozszerzenie `pdo_mysql` w lokalnym PHP CLI używanym przez projekt.
+
+Stan przed zmianą:
+
+- `php` uruchamiał się z `E:\Modelarski VOD\php\php.exe`,
+- PHP nie ładował żadnego aktywnego `php.ini`,
+- dostępne było `PDO`,
+- brakowało aktywnego sterownika `pdo_mysql`.
+
+Wykonano:
+
+- utworzono lokalny plik `E:\Modelarski VOD\php\php.ini` na bazie `php.ini-production`,
+- ustawiono `extension_dir = "ext"`,
+- włączono `extension=pdo_mysql`.
+
+Wynik:
+
+- PHP CLI ładuje `E:\Modelarski VOD\php\php.ini`,
+- `php -m` pokazuje `pdo_mysql`,
+- `PDO drivers` zawiera `mysql`,
+- smoke test AquaCore OS CLI przechodzi poprawnie,
+- `database:test` bez lokalnej konfiguracji nadal kończy się bezpiecznie statusem `skipped`.
+
+Nie tworzono lokalnego pliku `aquacore.local.php`.
+
+Nie czytano plików z hasłami.
+
+Nie wykonano realnego połączenia z MariaDB.
+
 Nie dodano endpointów API.
 
 Nie podłączono MariaDB ani MQTT.

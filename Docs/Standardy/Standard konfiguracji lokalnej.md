@@ -220,6 +220,16 @@ Na tym etapie loader nie wykonuje połączenia z MariaDB ani MQTT.
 
 Pierwszy test połączenia MariaDB korzysta z lokalnego override konfiguracji.
 
+Wymaganie środowiskowe:
+
+- PHP CLI musi mieć aktywne rozszerzenie `pdo_mysql`.
+
+Sprawdzenie:
+
+```powershell
+php -m | Select-String pdo_mysql
+```
+
 Plik lokalny:
 
 - `AquaCore OS/Config/aquacore.local.php`
