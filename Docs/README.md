@@ -34,3 +34,9 @@ Takie pliki muszą pozostać poza repozytorium albo w lokalizacji wyłączonej p
 Szczegółowy standard commitów, pushowania, opisów commitów, ochrony sekretów i kontroli przed większym etapem znajduje się w:
 
 - `Standardy/Standard pracy z GitHubem.md`
+
+## Standard konfiguracji lokalnej
+
+Zasady przechowywania prywatnych plików poza repozytorium, przygotowywania przykładów konfiguracji bez sekretów oraz rozróżniania plików commitowanych i lokalnych znajdują się w:
+
+- `Standardy/Standard konfiguracji lokalnej.md`

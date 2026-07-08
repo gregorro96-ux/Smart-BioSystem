@@ -1738,3 +1738,23 @@ Dodano dokument:
 Zaktualizowano także indeks dokumentacji i zasady pracy agentów.
 
 Standard utrzymuje zasadę selektywnego `git add <plik>` i nie traktuje `git add .` jako rutynowej komendy pracy.
+
+---
+
+## STANDARD KONFIGURACJI LOKALNEJ
+
+Udokumentowano standard bezpiecznej konfiguracji lokalnej przed podłączeniem MariaDB i MQTT.
+
+Opisano:
+
+- gdzie trzymać prywatne pliki poza repozytorium,
+- jak mają wyglądać przykładowe konfiguracje bez sekretów,
+- co wolno commitować,
+- czego nie wolno commitować,
+- jak sprawdzać, czy plik prywatny jest ignorowany przez Git.
+
+Dodano dokument:
+
+- `Docs/Standardy/Standard konfiguracji lokalnej.md`
+
+Nie zmieniano kodu AquaCore OS, konfiguracji runtime, MariaDB ani MQTT.

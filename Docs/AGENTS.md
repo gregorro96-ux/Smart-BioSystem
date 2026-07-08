@@ -516,3 +516,17 @@ Najważniejsze zasady:
 - sekrety, hasła, tokeny, klucze i prywatne konfiguracje nie mogą trafić do repozytorium,
 - przed większym etapem sprawdź `git status`, aktywną gałąź i ostatnie commity,
 - `git add .` nie jest rutynowym standardem pracy.
+
+# Standard konfiguracji lokalnej
+
+Szczegółowe zasady konfiguracji lokalnej znajdują się w:
+
+- `Docs/Standardy/Standard konfiguracji lokalnej.md`
+
+Najważniejsze zasady:
+
+- prywatne pliki z hasłami, tokenami i lokalną konfiguracją trzymamy poza repozytorium albo w lokalizacji ignorowanej przez `.gitignore`,
+- do repozytorium wolno dodawać tylko przykłady konfiguracji bez sekretów,
+- przykładowe hasła muszą być placeholderami typu `CHANGE_ME`,
+- przed commitem konfiguracji należy sprawdzić `git status`, `git diff`, `git diff --cached` i listę staged plików,
+- komendy diagnostyczne nie mogą wypisywać prawdziwych sekretów w terminalu ani logach.
