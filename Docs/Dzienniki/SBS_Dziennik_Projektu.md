@@ -361,3 +361,21 @@ Ustalono:
 - nie wdrożono logowania ani kontroli dostępu.
 
 Zmiana stanowi kontrakt danych pod przyszłe prywatne endpointy oraz AquaCore UI / AquaCore Monitor.
+--------------------------------------------------
+
+2026-07-08
+
+Kamień milowy:
+
+Zakończono Sesję roboczą nr 009 AquaCore OS.
+
+Efekt sesji:
+
+- MariaDB posiada realny test połączenia,
+- MQTT posiada realny test połączenia,
+- API posiada pierwszy prywatny kontrakt `api:health`,
+- Security posiada anonimowy kontekst użytkownika, role, uprawnienia i szkielet sesji,
+- GitHub i lokalne repozytorium są zsynchronizowane,
+- nie wykonano migracji, zmian tabel, logowania, endpointów HTTP ani runtime zapisu danych.
+
+Sesja 009 zamknęła etap pierwszych fundamentów diagnostycznych AquaCore OS.

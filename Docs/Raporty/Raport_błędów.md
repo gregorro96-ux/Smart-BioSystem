@@ -674,3 +674,65 @@ Nie.
 Czy wymaga dalszej obserwacji:
 
 Tak. Wszystkie pliki PHP tworzone przez narzędzia powinny być zapisywane jako UTF-8 bez BOM.
+---
+
+=================================================
+BŁĄD NR 017
+Identyfikator: SBS-BUG-017
+Komponent: AquaCore OS / Security / CLI
+Data wykrycia: 08.07.2026
+Sesja: 009
+Środowisko: AquaCore OS CLI
+Status: Resolved
+Powiązany commit: 127dd02
+=================
+
+Opis objawu:
+
+Po dodaniu fundamentu Security smoke test CLI wykrył, że `security:status` nie wypisywał ról, uprawnień i stanu sesji, mimo że `security:context` oraz `api:health` zawierały już anonimowy kontekst użytkownika.
+
+Warunki wystąpienia:
+
+- `UserContext` został rozszerzony o role, permissions i `SessionContext`,
+- `security:context` zwracał poprawny JSON,
+- `security:status` nadal pokazywał tylko wcześniejsze pola.
+
+Przyczyna:
+
+Aktualizacja `security:status` nie została zastosowana przy pierwszej próbie edycji pliku.
+
+Sposób diagnozy:
+
+Smoke test CLI zwrócił brak oczekiwanego tekstu `roles: anonymous` w wyniku komendy `security:status`.
+
+Sposób rozwiązania:
+
+Nadpisano `SecurityStatusCommand` wersją pokazującą:
+
+- `authenticated`,
+- `roles`,
+- `permissions`,
+- `session_active`,
+- `login`.
+
+Wynik testów po poprawce:
+
+- `security:status` pokazuje `roles: anonymous`,
+- `security:context` pokazuje anonimowy kontekst,
+- smoke test CLI kończy się wynikiem `All CLI tests passed`.
+
+Wpływ na system:
+
+Przed poprawką status Security był niepełny. Nie wpływało to na logowanie, ponieważ logowanie nie jest jeszcze zaimplementowane.
+
+Zmiany w bazie danych:
+
+Brak.
+
+Czy problem mógł ujawniać sekrety:
+
+Nie.
+
+Czy wymaga dalszej obserwacji:
+
+Nie, po poprawce test został powtórzony i zakończył się sukcesem.

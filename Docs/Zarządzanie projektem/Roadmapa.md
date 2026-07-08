@@ -157,8 +157,8 @@ Najbliższy kierunek prac po uruchomieniu bootowalnego szkieletu AquaCore OS Cor
 4. Przygotować standard bezpiecznej konfiguracji lokalnej poza repozytorium.
 5. Podłączyć MariaDB najpierw wyłącznie jako test połączenia. Status: wykonano w Sesji 009, bez migracji i bez zmian tabel.
 6. Podłączyć MQTT najpierw wyłącznie jako test połączenia. Status: wykonano w Sesji 009, bez publikacji, subskrypcji i runtime MQTT.
-7. Przygotować prywatny health check API. Status: wykonano pierwszy kontrakt CLI pi:health bez serwera HTTP i bez publicznych endpointów.
-8. Rozpocząć Security od logowania lokalnego, sesji, `UserContext`, ról i indywidualnych uprawnień.
+7. Przygotować prywatny health check API. Status: wykonano pierwszy kontrakt CLI `api:health` bez serwera HTTP i bez publicznych endpointów.
+8. Rozpocząć Security od logowania lokalnego, sesji, `UserContext`, ról i indywidualnych uprawnień. Status: wykonano fundament bez logowania: anonimowy `UserContext`, role, uprawnienia i `SessionContext`.
 9. Dopiero później rozwijać runtime automatyzacji, scheduler i silniki środowiskowe.
 10. Równolegle prowadzić changelog i release notes dla AquaCore OS oraz AquaCore UI.
 
