@@ -28,3 +28,9 @@ Główna zasada: dokument powinien znajdować się tam, gdzie użytkownik lub op
 Pliki z hasłami, tokenami, kluczami i prywatną konfiguracją nie są częścią dokumentacji projektowej przeznaczonej do wersjonowania.
 
 Takie pliki muszą pozostać poza repozytorium albo w lokalizacji wyłączonej przez `.gitignore`.
+
+## Standard pracy z GitHubem
+
+Szczegółowy standard commitów, pushowania, opisów commitów, ochrony sekretów i kontroli przed większym etapem znajduje się w:
+
+- `Standardy/Standard pracy z GitHubem.md`

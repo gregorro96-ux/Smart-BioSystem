@@ -121,3 +121,17 @@ Preferowana kolejność decyzji:
 5. Jeżeli nie pasuje do żadnej grupy, należy zaproponować nowy folder.
 
 Root folderu `Docs` powinien pozostać lekki i pełnić funkcję wejścia do dokumentacji, a nie miejsca odkładania wszystkich plików.
+
+## Standard GitHub
+
+Zasady pracy z GitHubem są opisane w osobnym dokumencie:
+
+- `Docs/Standardy/Standard pracy z GitHubem.md`
+
+Ten dokument określa:
+
+- kiedy robić commit lokalny,
+- kiedy wykonywać push,
+- jak opisywać commity,
+- jak chronić sekrety,
+- co sprawdzić przed większym etapem pracy.

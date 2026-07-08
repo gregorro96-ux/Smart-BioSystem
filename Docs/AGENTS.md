@@ -501,3 +501,18 @@ Po zakończeniu większej sesji dokumentuj:
 Istotne zmiany techniczne i użytkowe wymagają wpisu w changelogu oraz krótkich release notes, gdy wpływają na użytkownika, administratora albo sposób utrzymania systemu.
 
 AquaCore Monitor, AquaCore UI i AquaCore Home nie tworzą własnego niezależnego źródła prawdy o stanie systemu. Korzystają z danych AquaCore OS: Boot Sequence, statusów modułów, logów oraz przyszłego API status / health.
+
+# Standard GitHub
+
+Szczegółowe zasady pracy z GitHubem znajdują się w:
+
+- `Docs/Standardy/Standard pracy z GitHubem.md`
+
+Najważniejsze zasady:
+
+- commit lokalny wykonuj po zakończeniu małego, sprawdzonego zakresu pracy,
+- push wykonuj dopiero po sprawdzeniu commita i stanu repozytorium,
+- commity opisuj w formacie `typ(zakres): opis`,
+- sekrety, hasła, tokeny, klucze i prywatne konfiguracje nie mogą trafić do repozytorium,
+- przed większym etapem sprawdź `git status`, aktywną gałąź i ostatnie commity,
+- `git add .` nie jest rutynowym standardem pracy.

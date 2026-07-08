@@ -1716,3 +1716,25 @@ Smart BioSystem posiada teraz lokalną historię projektu na NAS oraz zdalne rep
 Od tego momentu GitHub pełni rolę zdalnej kopii historii projektu i punktu synchronizacji gałęzi `development`.
 
 Git i GitHub pozostają narzędziami kontroli wersji oraz współpracy. Nie są elementami runtime Smart BioSystem ani AquaCore OS.
+
+---
+
+## STANDARD PRACY Z GITHUBEM
+
+Uzupełniono standard pracy z GitHubem dla projektu Smart BioSystem.
+
+Opisano:
+
+- kiedy wykonywać lokalny commit,
+- kiedy wykonywać push na GitHub,
+- jak opisywać commity,
+- jak nie wrzucać sekretów do repozytorium,
+- co sprawdzać przed każdym większym etapem pracy.
+
+Dodano dokument:
+
+- `Docs/Standardy/Standard pracy z GitHubem.md`
+
+Zaktualizowano także indeks dokumentacji i zasady pracy agentów.
+
+Standard utrzymuje zasadę selektywnego `git add <plik>` i nie traktuje `git add .` jako rutynowej komendy pracy.
