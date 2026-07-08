@@ -263,3 +263,106 @@ Przy dużych zmianach struktury bazy należy zawsze stosować kolejność:
 Uwagi:
 
 Migracja wszystkich tabel do BIGINT(20) UNSIGNED została zakończona sukcesem i stanowi punkt odniesienia dla kolejnych wersji bazy danych SBS.
+
+=================================================
+BŁĄD NR 008
+Data pierwszego wystąpienia: 07.07.2026
+Moduł: AquaCore OS / PHP
+Źródło zgłoszenia: Codex
+Status: Rozwiązany
+Liczba wystąpień: 1
+Ostatnie wystąpienie: 07.07.2026
+Priorytet: Średni
+=================
+
+Objawy:
+
+* PHP zgłaszał błąd:
+
+`strict_types declaration must be the very first statement in the script`
+
+* Część nowych plików PHP nie przechodziła sprawdzenia składni.
+
+Przyczyna:
+
+Pliki PHP zapisane przez PowerShell zostały utworzone jako UTF-8 z BOM.
+
+Deklaracja `declare(strict_types=1);` musi znajdować się na początku pliku, a BOM powodował, że PHP widział dodatkowe bajty przed deklaracją.
+
+Rozwiązanie:
+
+Przekonwertowano pliki PHP AquaCore OS do UTF-8 bez BOM.
+
+Wnioski:
+
+Pliki PHP w AquaCore OS muszą być zapisywane jako UTF-8 bez BOM.
+
+Po każdej większej zmianie PHP należy wykonać:
+
+* sprawdzenie składni `php -l`,
+* uruchomienie testów CLI.
+
+---
+
+=================================================
+BŁĄD NR 009
+Data pierwszego wystąpienia: 07.07.2026
+Moduł: AquaCore OS / Logging / Windows SMB
+Źródło zgłoszenia: Codex
+Status: Rozwiązany
+Liczba wystąpień: 1
+Ostatnie wystąpienie: 07.07.2026
+Priorytet: Średni
+=================
+
+Objawy:
+
+* Komenda `logs:status` pokazywała brak możliwości zapisu do katalogu logów.
+* Logger faktycznie potrafił zapisywać wpisy do pliku logu.
+
+Przyczyna:
+
+Funkcja `is_writable()` zwracała fałszywy wynik negatywny na ścieżce SMB/UNC.
+
+Rozwiązanie:
+
+Diagnostykę `logs:status` oparto o realną próbę zapisu do katalogu i pliku logu zamiast polegania wyłącznie na `is_writable()`.
+
+Wnioski:
+
+Na udziałach sieciowych SMB/UNC diagnostyka zapisu powinna używać realnej próby zapisu.
+
+Same metadane uprawnień mogą być mylące w środowisku Windows + Synology SMB.
+
+---
+
+=================================================
+BŁĄD NR 010
+Data pierwszego wystąpienia: 07.07.2026
+Moduł: Windows CLI / UNC / AquaCore OS
+Źródło zgłoszenia: Codex
+Status: Wyjaśniony
+Liczba wystąpień: kilka podczas sesji
+Ostatnie wystąpienie: 07.07.2026
+Priorytet: Niski
+=================
+
+Objawy:
+
+* Część poleceń Windows CLI miała problem z bezpośrednią pracą na ścieżkach `\\Serwer\...`.
+* CMD informował, że ścieżki UNC nie są obsługiwane jako bieżący katalog roboczy.
+* Niektóre polecenia wymagały użycia `pushd`.
+
+Przyczyna:
+
+Ograniczenia Windows CLI przy pracy z udziałami UNC jako bieżącym katalogiem.
+
+Rozwiązanie:
+
+Do uruchamiania komend z katalogu projektu stosowano `pushd`, które tymczasowo mapuje udział sieciowy na literę dysku.
+
+Wnioski:
+
+Przy pracy z projektem SBS na Synology SMB należy pamiętać, że część narzędzi Windows może wymagać `pushd` lub uruchomienia z mapowanego dysku.
+
+Koniec wpisu.

@@ -1,4 +1,4 @@
-=================================================
+﻿=================================================
 SESJA ROBOCZA NR 001
 Data: 15-16.06.2026
 Godzina: xx:xx - xx:xx
@@ -1185,163 +1185,294 @@ Powstały fundamenty przyszłej dokumentacji AquaCore OS oraz AquaCore UI, któr
 =================================================
 SESJA ROBOCZA NR 008
 Data: 07.07.2026
-Autor: Codex
-Moduł: AquaCore OS / Core
+Godzina: 17:11 - 22:35
+Czas trwania: 5 godzin 24 minuty
+Autor: Grzegorz / Codex
+Moduł: AquaCore OS Core / CLI / Git / Dokumentacja
 Status: Zakończona sukcesem
 ==================
 
 TEMAT SESJI
 
-Pierwszy techniczny krok AquaCore OS: utworzenie minimalnego bootowalnego rdzenia systemu.
+Pierwszy techniczny dzień pracy nad AquaCore OS Core: uruchomienie bootowalnego szkieletu systemu, przygotowanie diagnostyki CLI, testów oraz lokalnej historii projektu Git.
 
 ---
 
-## WYKONANE PRACE
+## PODSUMOWANIE STANU PO SESJI
 
-1. Utworzono punkt wejścia CLI:
+Mamy obecnie bootowalny szkielet AquaCore OS Core, czyli pierwszy techniczny fundament systemu, ale jeszcze bez prawdziwego runtime aplikacyjnego.
+
+AquaCore OS już wstaje, diagnozuje siebie i ma szkielet modułów.
+
+Jeszcze nie steruje systemem biologicznym.
+
+---
+
+## CO MAMY
+
+* Minimalny punkt startowy CLI:
+
+  * AquaCore OS/aquacore.php
+
+* Rejestr komend CLI i standard komendy:
+
+  * name
+  * description
+  * usage
+  * execute
+
+* Pomoc CLI uruchamianą także bez argumentów.
+
+* Komendy diagnostyczne:
+
+  * help
+  * system:status
+  * system:version
+  * system:health
+  * system:boot
+  * system:modules
+  * config:show
+  * config:validate
+  * logs:status
+  * database:status
+  * database:test
+  * mqtt:status
+  * mqtt:test
+  * api:status
+  * security:status
+  * tests:run
+
+* Szkielet konfiguracji AquaCore OS.
+
+* Szkielet modułów:
+
+  * Database
+  * MQTT
+  * API
+  * Security
+  * Logging
+  * Boot Sequence
+
+* Lokalny logger i podstawowe kody błędów.
+
+* Smoke test CLI.
+
+* Git jako lokalną historię projektu na gałęzi:
+
+  * development
+
+* Dokumentację rdzenia, CLI, architektury i zasad pracy z Git.
+
+---
+
+## WYKONANE PRACE TECHNICZNE
+
+1. Utworzono bootowalny rdzeń AquaCore OS Core.
+
+2. Utworzono punkt wejścia CLI:
 
 * AquaCore OS/aquacore.php
 
-2. Utworzono podstawowy bootstrap systemu:
+3. Utworzono podstawowy bootstrap i kernel CLI:
 
 * AquaCore OS/Core/Bootstrap.php
-
-3. Utworzono minimalny kernel CLI:
-
 * AquaCore OS/Core/Kernel.php
 
-4. Utworzono moduł statusu systemu:
+4. Dodano rejestr komend CLI:
 
-* AquaCore OS/System/SystemStatus.php
-* AquaCore OS/System/SystemConstants.php
+* AquaCore OS/Core/CommandInterface.php
+* AquaCore OS/Core/CommandRegistry.php
+* AquaCore OS/Core/Commands/HelpCommand.php
 
-5. Utworzono prosty logger systemowy:
-
-* AquaCore OS/Logging/Logger.php
-
----
-
-## ZAKRES ZMIAN
-
-Zmiana nie modyfikuje:
-
-* struktury bazy danych,
-* tabel,
-* kolumn,
-* relacji,
-* publicznego API,
-* mapy folderów projektu.
-
----
-
-## STATUS TESTÓW
-
-Wykonano:
-
-* uruchomienie komendy `system:status`,
-* sprawdzenie składni PHP nowych plików.
-
-Wynik:
-
-* AquaCore OS zwraca status `bootable`,
-* brak błędów składni PHP.
-
----
-
-## ZMIANY BAZY DANYCH
-
-Brak.
-
----
-
-## COMMIT GIT
-
-Nie wykonano.
-
-Powód:
-
-Środowisko terminalowe nie posiada obecnie dostępnej komendy `git`.
-
-Koniec wpisu.
-
-=================================================
-=================================================
-SESJA ROBOCZA NR 009
-Data: 07.07.2026
-Autor: Codex
-Moduł: AquaCore OS / Core / Config / API / Database
-Status: Zakończona sukcesem
-==================
-
-TEMAT SESJI
-
-Rozbudowa pierwszego rdzenia AquaCore OS o konfigurację środowisk, system komend CLI oraz szkielety API i Database.
-
----
-
-## WYKONANE PRACE
-
-1. Dodano obsługę środowisk pracy:
+5. Dodano obsługę środowisk pracy:
 
 * local
 * development
 * beta
 * stable
 
-2. Dodano plik konfiguracji AquaCore OS:
+6. Dodano konfigurację AquaCore OS:
 
 * AquaCore OS/Config/aquacore.php
-
-3. Dodano klasy konfiguracji:
-
 * AquaCore OS/Config/Environment.php
 * AquaCore OS/Config/Configuration.php
 * AquaCore OS/Config/ConfigLoader.php
+* AquaCore OS/Config/DatabaseConfig.php
+* AquaCore OS/Config/MqttConfig.php
+* AquaCore OS/Config/ConfigValidator.php
+* AquaCore OS/Config/ConfigValidationResult.php
 
-4. Przebudowano CLI na rejestr komend:
+7. Dodano szkielety modułów:
 
-* AquaCore OS/Core/CommandInterface.php
-* AquaCore OS/Core/CommandRegistry.php
-* AquaCore OS/Core/Kernel.php
-* AquaCore OS/Core/Bootstrap.php
+* API
+* Database
+* MQTT
+* Security
+* Logging
+* System Boot Sequence
 
-5. Dodano komendy diagnostyczne:
+8. Dodano standard odpowiedzi API:
 
-* system:status
-* system:health
-* config:show
-* database:test
-* mqtt:test
+* success
+* code
+* message
+* data
+* errors
 
-6. Dodano szkielet Database:
+9. Dodano standard błędów i logów:
 
-* AquaCore OS/Database/DatabaseConnectionInterface.php
-* AquaCore OS/Database/NullDatabaseConnection.php
-* AquaCore OS/Database/DatabaseManager.php
+* AquaCore OS/Errors/ErrorCode.php
+* AquaCore OS/Errors/AquaCoreException.php
+* AquaCore OS/Logging/LogLevel.php
+* AquaCore OS/Logging/Logger.php
 
-7. Dodano szkielet API:
+10. Dodano model statusu modułów:
 
-* AquaCore OS/API/Request.php
-* AquaCore OS/API/Response.php
-* AquaCore OS/API/Router.php
+* AquaCore OS/System/ModuleState.php
+* AquaCore OS/System/ModuleStatus.php
+* AquaCore OS/System/ModuleStatusProvider.php
 
-8. Dodano dokumentację rdzenia:
+11. Dodano boot sequence:
 
+* AquaCore OS/System/BootSequence.php
+* AquaCore OS/System/BootStepInterface.php
+* AquaCore OS/System/BootStepResult.php
+* AquaCore OS/System/ConfigurationBootStep.php
+
+12. Dodano szkielet Security pod przyszłe logowanie:
+
+* AquaCore OS/Security/UserContext.php
+* AquaCore OS/Security/AuthProviderInterface.php
+* AquaCore OS/Security/NullAuthProvider.php
+* AquaCore OS/Security/LoginResult.php
+
+13. Dodano testy CLI:
+
+* Tests/AquaCore OS/CliSmokeTest.php
+
+14. Dodano dokumentację uruchomieniową:
+
+* AquaCore OS/README.md
 * Docs/AquaCore OS/AquaCore_OS_Core.md
+* Docs/AquaCore OS/CLI.md
 
 ---
 
-## ZAKRES ZMIAN
+## KONFIGURACJA GIT
 
-Zmiana nie modyfikuje:
+Wykonano konfigurację lokalnego repozytorium Git.
 
-* struktury bazy danych,
-* tabel,
-* kolumn,
-* relacji,
-* publicznego API,
-* mapy bazy danych,
-* mapy folderów projektu.
+Ustalono:
+
+* repozytorium znajduje się w głównym katalogu projektu SBS,
+* główna gałąź robocza to `development`,
+* Git pełni rolę lokalnej historii projektu,
+* sekrety, hasła, tokeny, klucze prywatne i prywatna konfiguracja nie są wersjonowane,
+* `stable` pozostaje gałęzią stabilną i nie jest miejscem codziennej pracy.
+
+Pierwszy commit projektu:
+
+* 7ee68bf
+* feat(core): dodano bootowalny rdzeń AquaCore OS
+
+Zakres commita:
+
+* 81 plików,
+* 11101 nowych linii,
+* rdzeń AquaCore OS,
+* dokumentacja,
+* struktura SQL,
+* konfiguracja MQTT,
+* pliki `.gitignore` i `.gitattributes`.
+
+---
+
+## CZEGO JESZCZE NIE MAMY
+
+* Realnego połączenia z MariaDB.
+* Realnego połączenia z brokerem MQTT.
+* Publicznych ani prywatnych endpointów API.
+* Logowania użytkownika.
+* Sesji, ról, uprawnień ani kontroli dostępu.
+* Migracji lub warstwy zapisu danych.
+* Runtime automatyzacji.
+* Harmonogramów.
+* Silników środowiskowych:
+
+  * Climate
+  * Light
+  * Weather
+  * Moon
+  * Life History
+
+* Interfejsu AquaCore UI podłączonego do rdzenia.
+* NAIDY w runtime.
+* Obsługi urządzeń fizycznych przez AquaCore OS.
+* Mechanizmu instalacji modułów / SBS Store.
+* Produkcyjnej konfiguracji sekretów.
+
+Uwaga:
+
+Sekrety mają pozostać poza repozytorium.
+
+---
+
+## CO JEST PRZED NAMI
+
+Najbliższy sensowny ciąg prac:
+
+1. Dokończyć commit dokumentacyjny Git:
+
+   * docs(git): zaktualizowano dokumentację kontroli wersji
+
+2. Przygotować bezpieczną konfigurację lokalną:
+
+   * osobne pliki prywatne poza repo,
+   * przykładowe pliki konfiguracyjne bez sekretów,
+   * jasny standard ładowania konfiguracji.
+
+3. Podłączyć MariaDB:
+
+   * najpierw tylko test połączenia,
+   * potem warstwa `DatabaseConnection`,
+   * bez zmiany struktury tabel.
+
+4. Podłączyć MQTT:
+
+   * test połączenia,
+   * status brokera,
+   * później publikacja/subskrypcja testowa.
+
+5. Zbudować pierwszy prywatny endpoint health check API.
+
+6. Rozpocząć Security:
+
+   * lokalne logowanie,
+   * `UserContext`,
+   * sesja,
+   * podstawowe role.
+
+7. Dopiero potem ruszać runtime systemu:
+
+   * scheduler,
+   * automatyzacje,
+   * pierwsze moduły ekosystemów,
+   * silniki środowiskowe.
+
+---
+
+## ZASADY BEZPIECZEŃSTWA
+
+Nie wolno wersjonować:
+
+* haseł,
+* tokenów,
+* kluczy prywatnych,
+* plików `.env`,
+* prywatnej konfiguracji,
+* plików z danymi dostępowymi.
+
+Pliki zawierające dane dostępowe muszą pozostawać poza repozytorium Git.
 
 ---
 
@@ -1349,309 +1480,7 @@ Zmiana nie modyfikuje:
 
 Brak.
 
----
-
-## COMMIT GIT
-
-Nie wykonano.
-
-Powód:
-
-Git jest obecnie konfigurowany przez Grzegorza.
-
-Koniec wpisu.
-
-=================================================
-UZUPEŁNIENIE SESJI 009 - TESTY
-
-W trakcie weryfikacji wykryto problem kodowania części plików PHP zapisanych przez PowerShell.
-
-Objaw:
-
-* PHP zgłaszał błąd `strict_types declaration must be the very first statement in the script`.
-
-Przyczyna:
-
-* pliki zostały zapisane jako UTF-8 z BOM.
-
-Rozwiązanie:
-
-* przekonwertowano pliki PHP AquaCore OS do UTF-8 bez BOM.
-
-Status testów końcowych:
-
-* sprawdzono składnię wszystkich plików PHP w AquaCore OS,
-* uruchomiono `system:status`,
-* uruchomiono `system:health`,
-* uruchomiono `config:show`,
-* uruchomiono `database:test`,
-* uruchomiono `mqtt:test`.
-
-Wynik:
-
-* brak błędów składni PHP,
-* wszystkie komendy diagnostyczne działają,
-* baza danych nadal nie jest podłączona,
-* MQTT nadal nie jest podłączone.
-
-=================================================
-=================================================
-SESJA ROBOCZA NR 010
-Data: 07.07.2026
-Autor: Codex
-Moduł: AquaCore OS / Config / API / Database / MQTT / Security / System
-Status: Zakończona sukcesem
-==================
-
-TEMAT SESJI
-
-Rozbudowa fundamentów AquaCore OS bez wykonywania migracji, bez łączenia z MariaDB i bez łączenia z MQTT.
-
----
-
-## WYKONANE PRACE
-
-1. Dodano konfigurację MariaDB bez wykonywania połączenia:
-
-* AquaCore OS/Config/DatabaseConfig.php
-* AquaCore OS/Config/aquacore.php
-
-2. Dodano konfigurację MQTT bez wykonywania połączenia:
-
-* AquaCore OS/Config/MqttConfig.php
-* AquaCore OS/Config/aquacore.php
-
-3. Przygotowano standard odpowiedzi API:
-
-* AquaCore OS/API/ApiResponse.php
-* AquaCore OS/API/Response.php
-* AquaCore OS/API/Router.php
-
-4. Dodano komendy statusowe:
-
-* database:status
-* mqtt:status
-
-5. Przygotowano moduł Security pod przyszłe logowanie:
-
-* AquaCore OS/Security/UserContext.php
-* AquaCore OS/Security/AuthProviderInterface.php
-* AquaCore OS/Security/NullAuthProvider.php
-* AquaCore OS/Security/LoginResult.php
-
-6. Przygotowano moduł System pod boot sequence:
-
-* AquaCore OS/System/BootSequence.php
-* AquaCore OS/System/BootStepInterface.php
-* AquaCore OS/System/BootStepResult.php
-* AquaCore OS/System/ConfigurationBootStep.php
-
-7. Przygotowano standard błędów i logów:
-
-* AquaCore OS/Errors/ErrorCode.php
-* AquaCore OS/Errors/AquaCoreException.php
-* AquaCore OS/Logging/LogLevel.php
-* AquaCore OS/Logging/Logger.php
-
-8. Dodano pierwsze testy automatyczne CLI:
-
-* Tests/AquaCore OS/CliSmokeTest.php
-
-9. Zaktualizowano dokumentację rdzenia:
-
-* Docs/AquaCore OS/AquaCore_OS_Core.md
-
----
-
-## STATUS TESTÓW
-
-Wykonano:
-
-* sprawdzenie składni wszystkich plików PHP w AquaCore OS,
-* sprawdzenie składni testów CLI,
-* uruchomienie testów CLI.
-
-Wynik:
-
-* brak błędów składni PHP,
-* wszystkie testy CLI zakończone sukcesem.
-
----
-
-## ZAKRES BEZPIECZEŃSTWA
-
-Nie wykonano:
-
-* migracji bazy danych,
-* zmian tabel,
-* zmian kolumn,
-* zmian relacji,
-* połączenia z MariaDB,
-* połączenia z MQTT,
-* publicznych endpointów API,
-* aktualizacji mapy folderów,
-* aktualizacji mapy bazy danych.
-
----
-
-## COMMIT GIT
-
-Nie wykonano.
-
-Powód:
-
-Git jest obecnie konfigurowany przez Grzegorza.
-
-Koniec wpisu.
-
-=================================================
-=================================================
-SESJA ROBOCZA NR 011
-Data: 07.07.2026
-Autor: Codex
-Moduł: AquaCore OS / CLI / System Diagnostics
-Status: Zakończona sukcesem
-==================
-
-TEMAT SESJI
-
-Rozbudowa diagnostyki CLI AquaCore OS o status modułów, boot sequence oraz status API i Security.
-
----
-
-## WYKONANE PRACE
-
-1. Dodano wspólny model statusu modułów:
-
-* AquaCore OS/System/ModuleState.php
-* AquaCore OS/System/ModuleStatus.php
-* AquaCore OS/System/ModuleStatusProvider.php
-
-2. Dodano komendy diagnostyczne:
-
-* system:boot
-* system:modules
-* api:status
-* security:status
-
-3. Podpięto nowe komendy w Bootstrap:
-
-* AquaCore OS/Core/Bootstrap.php
-
-4. Rozszerzono testy CLI:
-
-* Tests/AquaCore OS/CliSmokeTest.php
-
-5. Dodano dokumentację uruchomieniową:
-
-* AquaCore OS/README.md
-* Docs/AquaCore OS/CLI.md
-
----
-
-## STATUS TESTÓW
-
-Wykonano:
-
-* sprawdzenie składni plików PHP,
-* testy CLI.
-
-Wynik:
-
-* wszystkie testy CLI zakończone sukcesem,
-* `All CLI tests passed.`
-
----
-
-## ZAKRES BEZPIECZEŃSTWA
-
-Nie wykonano:
-
-* połączenia z MariaDB,
-* połączenia z MQTT,
-* publicznych endpointów API,
-* implementacji logowania,
-* migracji bazy danych,
-* aktualizacji mapy folderów,
-* aktualizacji mapy bazy danych.
-
----
-
-## COMMIT GIT
-
-Nie wykonano.
-
-Powód:
-
-Git jest obecnie konfigurowany przez Grzegorza.
-
-Koniec wpisu.
-
-=================================================
-=================================================
-SESJA ROBOCZA NR 012
-Data: 07.07.2026
-Autor: Codex
-Moduł: AquaCore OS / CLI Usability / Config Validation
-Status: Zakończona sukcesem
-==================
-
-TEMAT SESJI
-
-Rozbudowa wygody użycia CLI AquaCore OS oraz dodanie walidacji konfiguracji i diagnostyki logów.
-
----
-
-## WYKONANE PRACE
-
-1. Rozszerzono standard komend CLI o metodę `usage()`:
-
-* AquaCore OS/Core/CommandInterface.php
-
-2. Dodano komendę pomocy CLI:
-
-* help
-* AquaCore OS/Core/Commands/HelpCommand.php
-
-3. Dodano komendę wersji systemu:
-
-* system:version
-* AquaCore OS/System/Commands/SystemVersionCommand.php
-
-4. Dodano walidację konfiguracji:
-
-* config:validate
-* AquaCore OS/Config/ConfigValidator.php
-* AquaCore OS/Config/ConfigValidationResult.php
-* AquaCore OS/Config/Commands/ConfigValidateCommand.php
-
-5. Dodano diagnostykę logów:
-
-* logs:status
-* AquaCore OS/Logging/Commands/LogsStatusCommand.php
-
-Uwagi:
-
-Na udziale UNC funkcja `is_writable()` zwracała fałszywy wynik negatywny.
-Diagnostyka logów została oparta o realną próbę zapisu.
-
-6. Dodano uruchamianie testów przez CLI AquaCore OS:
-
-* tests:run
-* AquaCore OS/Testing/Commands/TestsRunCommand.php
-
-7. Zmieniono zachowanie domyślne CLI:
-
-* uruchomienie bez argumentów pokazuje pomoc.
-
-8. Zaktualizowano dokumentację:
-
-* AquaCore OS/README.md
-* Docs/AquaCore OS/CLI.md
-
-9. Rozszerzono testy CLI:
-
-* Tests/AquaCore OS/CliSmokeTest.php
+Nie zmieniano struktury bazy danych, tabel, kolumn ani relacji.
 
 ---
 
@@ -1665,32 +1494,20 @@ Wykonano:
 
 Wynik:
 
-* wszystkie testy zakończone sukcesem,
-* `All CLI tests passed.`
-
----
-
-## ZAKRES BEZPIECZEŃSTWA
-
-Nie wykonano:
-
-* połączenia z MariaDB,
-* połączenia z MQTT,
-* publicznych endpointów API,
-* implementacji logowania,
-* migracji bazy danych,
-* aktualizacji mapy folderów,
-* aktualizacji mapy bazy danych.
+* All CLI tests passed.
 
 ---
 
 ## COMMIT GIT
 
-Nie wykonano.
+Wykonany commit techniczny:
 
-Powód:
+* 7ee68bf
+* feat(core): dodano bootowalny rdzeń AquaCore OS
 
-Git jest obecnie konfigurowany przez Grzegorza.
+Do wykonania osobny commit dokumentacyjny:
+
+* docs(git): zaktualizowano dokumentację kontroli wersji
 
 Koniec wpisu.
 

@@ -50,3 +50,29 @@ php "AquaCore OS\aquacore.php" tests:run
 - API nie posiada publicznych endpointów.
 - Security nie posiada jeszcze logowania.
 - NAIDA pozostaje poza zakresem AquaCore OS Core.
+
+## Git
+
+AquaCore OS jest wersjonowany w lokalnym repozytorium Git projektu Smart BioSystem.
+
+Aktualny stan:
+
+- główna gałąź robocza: `development`,
+- pierwszy commit rdzenia: `7ee68bf`,
+- komunikat pierwszego commita: `feat(core): dodano bootowalny rdzeń AquaCore OS`.
+
+Git nie jest elementem runtime AquaCore OS.
+
+Przed kolejnymi commitami:
+
+```powershell
+git status
+git diff
+git add <konkretny-plik>
+git diff --cached
+git commit -m "typ(zakres): opis"
+```
+
+`git add .` nie powinno być używane rutynowo.
+
+Sekrety i prywatna konfiguracja muszą pozostawać poza repozytorium.

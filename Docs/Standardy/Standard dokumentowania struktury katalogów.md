@@ -42,3 +42,43 @@ Standard ten obowiązuje dla:
 * Docs
 * Tools
 * oraz wszystkich przyszłych komponentów projektu.
+
+## Standard pracy z Git
+
+Przed każdym commitem obowiązuje kolejność:
+
+1. Sprawdź stan repozytorium:
+
+```powershell
+git status
+```
+
+2. Sprawdź zmiany robocze:
+
+```powershell
+git diff
+```
+
+3. Dodaj wyłącznie konkretne pliki związane z daną zmianą:
+
+```powershell
+git add <plik>
+```
+
+4. Sprawdź staging:
+
+```powershell
+git diff --cached
+```
+
+5. Dopiero potem wykonaj commit:
+
+```powershell
+git commit -m "typ(zakres): opis"
+```
+
+`git add .` nie powinno być używane rutynowo przy kolejnych zmianach.
+
+Pliki z hasłami, tokenami, kluczami prywatnymi, pliki `.env` i prywatna konfiguracja muszą pozostawać poza repozytorium.
+
+Nie wolno przepisywać sekretów do dokumentacji ani commitów.

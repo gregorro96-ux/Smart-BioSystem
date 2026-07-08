@@ -1,4 +1,4 @@
-# SBS (Smart Bio System)
+﻿# SBS (Smart Bio System)
 
 # Architektura Systemu - Full Version v2
 
@@ -432,3 +432,42 @@ System powinien umożliwiać pełną obsługę ekosystemów przy użyciu:
 * lokalnego SBS Hub.
 
 Internet oraz SBS Cloud stanowią rozszerzenie możliwości systemu, a nie warunek jego działania.
+
+==================================================
+
+# Kontrola wersji
+
+Rola:
+
+Git pełni funkcję warstwy kontroli wersji projektu Smart BioSystem.
+
+Przeznaczenie:
+
+* zapis historii zmian,
+* audyt zmian w kodzie i dokumentacji,
+* kontrola zakresu kolejnych commitów,
+* możliwość powrotu do wcześniejszych stanów projektu,
+* dokumentowanie rozwoju AquaCore OS i pozostałych modułów SBS.
+
+Założenia:
+
+* repozytorium działa lokalnie w głównym katalogu projektu na dysku `S:`,
+* główną gałęzią roboczą jest `development`,
+* historia projektu jest obecnie utrzymywana lokalnie na Synology,
+* zmiany powinny być zapisywane małymi, tematycznymi commitami.
+
+Ograniczenie architektoniczne:
+
+Git nie jest elementem runtime Smart BioSystem.
+
+Nie odpowiada za:
+
+* działanie AquaCore OS,
+* komunikację MQTT,
+* pracę bazy danych,
+* automatyzacje,
+* bezpieczeństwo użytkowników w działającym systemie,
+* logikę urządzeń.
+
+Sekrety, hasła, tokeny, klucze prywatne i prywatna konfiguracja muszą pozostawać poza repozytorium.
+

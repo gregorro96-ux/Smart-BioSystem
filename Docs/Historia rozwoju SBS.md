@@ -1,4 +1,4 @@
-==================================================
+﻿==================================================
 HISTORIA ROZWOJU SMART BIOSYSTEM
 ==================================================
 
@@ -73,6 +73,22 @@ Architektura i dokumentacja
 • Standard dokumentacji.
 
 Status: W trakcie kończenia
+
+--------------------------------------------------
+
+FAZA IV-A
+Kontrola wersji i pierwszy rdzeń AquaCore OS
+
+• Zainstalowano i skonfigurowano Git for Windows.
+• Zainicjalizowano lokalne repozytorium Git w głównym katalogu Smart BioSystem na dysku S:.
+• Ustawiono gałąź roboczą development.
+• Dodano `.gitignore` i `.gitattributes`.
+• Potwierdzono, że sekrety i dane dostępowe nie zostały wprowadzone do historii Git.
+• Wykonano pierwszy commit projektu: 7ee68bf.
+• Utworzono bootowalny szkielet AquaCore OS Core.
+• Dodano diagnostykę CLI i pierwszy smoke test CLI.
+
+Status: Zakończona
 
 --------------------------------------------------
 
@@ -180,6 +196,30 @@ Przebudzenie NAIDA
 • Digital Twin.
 
 Status: Planowana
+
+--------------------------------------------------
+
+KAMIEŃ MILOWY GIT
+
+Data:
+
+07.07.2026
+
+Rezultat:
+
+Projekt Smart BioSystem otrzymał lokalną historię wersji w Git.
+
+Ustalono:
+
+• Repozytorium działa w głównym katalogu projektu na dysku S:.
+• Główną gałęzią roboczą jest development.
+• Pierwszy commit projektu to 7ee68bf.
+• Git zapisuje historię rozwoju projektu, ale nie jest elementem runtime SBS.
+• Pliki zawierające hasła, tokeny, klucze prywatne i prywatną konfigurację pozostają poza repozytorium.
+
+Znaczenie:
+
+Od tego punktu rozwój SBS może być prowadzony w sposób odtwarzalny, kontrolowany i możliwy do audytu.
 
 --------------------------------------------------
 

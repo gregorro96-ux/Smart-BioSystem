@@ -77,6 +77,8 @@ Nie wykonuje połączeń zewnętrznych.
 
 Sprawdza dostępność katalogu logów i pliku logu.
 
+Na udziałach SMB/UNC diagnostyka używa realnej próby zapisu.
+
 ## Komendy Database
 
 ### database:status
@@ -140,3 +142,25 @@ Uruchomienie:
 ```powershell
 php "Tests\AquaCore OS\CliSmokeTest.php"
 ```
+
+albo:
+
+```powershell
+php "AquaCore OS\aquacore.php" tests:run
+```
+
+## Git a CLI
+
+CLI AquaCore OS nie wykonuje operacji Git.
+
+Git służy wyłącznie do kontroli wersji kodu i dokumentacji projektu.
+
+Przed commitowaniem zmian w CLI należy wykonać testy, a następnie sprawdzić:
+
+1. `git status`
+2. `git diff`
+3. selektywne `git add <plik>`
+4. `git diff --cached`
+5. `git commit`
+
+`git add .` nie powinno być używane rutynowo.

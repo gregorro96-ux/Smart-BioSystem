@@ -237,3 +237,43 @@ Dopiero później:
 NAIDA jest zwieńczeniem projektu, a nie jego fundamentem.
 
 --------------------------------------------------
+2026-07-07
+
+Kamień milowy:
+
+Uruchomiono lokalną historię projektu Smart BioSystem w Git.
+
+Ustalono:
+
+- repozytorium działa lokalnie w głównym katalogu projektu SBS na dysku `S:`
+- główną gałęzią roboczą jest `development`
+- pierwszy commit projektu ma identyfikator `7ee68bf`
+- sekrety, hasła, tokeny, klucze prywatne i prywatna konfiguracja nie są wersjonowane
+- historia Git jest obecnie lokalnym źródłem historii projektu na Synology
+
+Przyjęto zasadę:
+
+Kolejne zmiany mają być zapisywane małymi, tematycznymi commitami po wcześniejszej kontroli `git status`, `git diff`, selektywnym `git add` i `git diff --cached`.
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+2026-07-07
+
+Kamień milowy:
+
+Uruchomiono bootowalny szkielet AquaCore OS Core.
+
+Ustalono:
+
+- AquaCore OS posiada punkt startowy CLI,
+- działa diagnostyka modułów,
+- działa smoke test CLI,
+- Git jest lokalną historią projektu na gałęzi `development`,
+- pierwszy commit techniczny projektu to `7ee68bf`,
+- sekrety pozostają poza repozytorium.
+
+AquaCore OS nie posiada jeszcze runtime aplikacyjnego, połączenia z MariaDB, połączenia z MQTT, API endpointów ani logowania użytkownika.
+
+Git pełni rolę kontroli wersji i dziennika zmian projektu, ale nie jest elementem runtime SBS.

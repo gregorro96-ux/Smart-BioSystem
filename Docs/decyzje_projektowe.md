@@ -919,3 +919,41 @@ Przewidywane role:
 * researcher
 
 Dostęp do ekosystemu użytkownika odbywa się wyłącznie za jego zgodą.
+
+---
+
+## 2026-07-07
+
+### Kontrola wersji projektu
+
+Decyzja:
+
+Smart BioSystem używa lokalnego repozytorium Git jako obecnego źródła historii projektu.
+
+Powód:
+
+Projekt osiągnął etap, w którym historia zmian musi być odtwarzalna, kontrolowana i możliwa do przeglądu przed każdym kolejnym krokiem rozwoju.
+
+Ustalenia:
+
+* główną gałęzią roboczą jest `development`,
+* kolejne zmiany zapisywane są małymi, tematycznymi commitami,
+* lokalne repozytorium na Synology jest obecnym źródłem historii projektu,
+* Git nie jest elementem runtime SBS i nie bierze udziału w działaniu AquaCore OS,
+* standardem zakończeń linii dla kodu i dokumentacji jest LF,
+* pliki `.bat`, `.cmd` i `.ps1` zachowują CRLF,
+* sekrety, hasła, tokeny, klucze prywatne, pliki `.env` i prywatna konfiguracja nie są wersjonowane.
+
+Zasada pracy:
+
+Przed commitem należy wykonać kolejno:
+
+1. `git status`
+2. `git diff`
+3. selektywne `git add <plik>`
+4. `git diff --cached`
+5. `git commit`
+
+Uwagi:
+
+`git add .` nie powinno być używane rutynowo, ponieważ zwiększa ryzyko przypadkowego dodania plików lokalnych lub prywatnych.

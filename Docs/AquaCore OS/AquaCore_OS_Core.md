@@ -1,6 +1,6 @@
 ﻿# AquaCore OS Core
 
-Status: Szkielet techniczny po pierwszej rozbudowie.
+Status: Bootowalny szkielet techniczny po pierwszym commicie Git.
 
 ## Cel
 
@@ -12,8 +12,8 @@ Na tym etapie odpowiada za:
 - załadowanie konfiguracji,
 - rozpoznanie środowiska pracy,
 - rejestrację komend diagnostycznych,
-- podstawowe logowanie lokalne,
 - przygotowanie szkieletu Database,
+- przygotowanie szkieletu MQTT,
 - przygotowanie szkieletu API,
 - przygotowanie szkieletu Security,
 - przygotowanie boot sequence,
@@ -64,13 +64,22 @@ Punkt wejścia:
 
 Dostępne komendy:
 
+- help,
 - system:status,
+- system:version,
 - system:health,
+- system:boot,
+- system:modules,
 - config:show,
+- config:validate,
+- logs:status,
 - database:test,
 - database:status,
 - mqtt:test,
-- mqtt:status.
+- mqtt:status,
+- api:status,
+- security:status,
+- tests:run.
 
 ## Database
 
@@ -146,16 +155,37 @@ Poziomy logów:
 
 ## Testy
 
-Dodano pierwsze testy automatyczne CLI:
+Testy CLI znajdują się w pliku:
 
 - Tests/AquaCore OS/CliSmokeTest.php
 
-Testy sprawdzają:
+Uruchomienie:
 
-- system:status,
-- config:show,
-- database:status,
-- mqtt:status.
+```powershell
+php "Tests\AquaCore OS\CliSmokeTest.php"
+```
+
+Albo przez AquaCore OS CLI:
+
+```powershell
+php "AquaCore OS\aquacore.php" tests:run
+```
+
+## Git
+
+AquaCore OS Core jest wersjonowany w lokalnym repozytorium Git projektu Smart BioSystem.
+
+Aktualny stan:
+
+- główna gałąź robocza: `development`,
+- pierwszy commit obejmujący bootowalny rdzeń AquaCore OS: `7ee68bf`,
+- komunikat pierwszego commita: `feat(core): dodano bootowalny rdzeń AquaCore OS`.
+
+Git jest historią projektu i narzędziem kontroli wersji.
+
+Git nie jest elementem runtime AquaCore OS.
+
+Sekrety, hasła, tokeny, klucze prywatne i prywatna konfiguracja muszą pozostawać poza repozytorium.
 
 ## Zasady bezpieczeństwa
 
@@ -165,15 +195,14 @@ Na tym etapie nie wykonano zmian w:
 - kolumnach,
 - relacjach,
 - publicznym API,
-- mapie folderów projektu,
 - mapie bazy danych.
 
 ## Następne kroki
 
 Proponowane kolejne kroki:
 
-1. Skonfigurować Git i wykonać commit.
-2. Przygotować właściwą konfigurację połączenia MariaDB.
-3. Przygotować właściwą konfigurację połączenia MQTT.
+1. Wykonać osobny commit dokumentacyjny: `docs(git): zaktualizowano dokumentację kontroli wersji`.
+2. Przygotować właściwą konfigurację połączenia MariaDB bez sekretów w repozytorium.
+3. Przygotować właściwą konfigurację połączenia MQTT bez sekretów w repozytorium.
 4. Zaprojektować pierwszy prywatny endpoint health check.
 5. Rozpocząć moduł Security od logowania lokalnego.

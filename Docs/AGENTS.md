@@ -1,4 +1,4 @@
-# AGENTS.md
+﻿# AGENTS.md
 
 Version: 2.0
 Project: Smart BioSystem (SBS)
@@ -209,11 +209,16 @@ Nazwy:
 
 # Git Workflow
 
-Główne gałęzie:
+Git pełni rolę Dziennika Pokładowego projektu.
+
+Historia projektu jest równie ważna jak kod.
+
+Główna gałąź robocza:
 
 - development
-- beta
-- release
+
+Gałąź stabilna:
+
 - stable
 
 Nowe funkcje:
@@ -226,8 +231,31 @@ hotfix/nazwa
 
 Nigdy nie wykonuj zmian bezpośrednio na gałęzi stable.
 
----
+Przed commitem:
 
+1. Najpierw `git status`.
+2. Potem `git diff`.
+3. Następnie selektywne `git add <plik>`.
+4. Potem `git diff --cached`.
+5. Dopiero na końcu `git commit`.
+
+`git add .` nie powinno być używane rutynowo.
+
+Twórz małe, tematyczne commity.
+
+Standard zakończeń linii:
+
+- LF dla kodu i dokumentacji,
+- CRLF dla `.bat`, `.cmd` i `.ps1`.
+
+Nie wolno wersjonować:
+
+- haseł,
+- tokenów,
+- kluczy prywatnych,
+- plików `.env`,
+- prywatnej konfiguracji,
+- plików z danymi dostępowymi.
 # Dokumentacja
 
 Po zakończeniu każdego zadania należy:
@@ -385,16 +413,6 @@ Zostanie uruchomiona po ukończeniu AquaCore OS.
 
 ---
 
-# Git
-
-Git pełni rolę Dziennika Pokładowego.
-
-Każda zmiana projektu powinna zostać zapisana.
-
-Historia projektu jest równie ważna jak kod.
-
----
-
 # Zasada współpracy
 
 Kapitan określa:
@@ -462,3 +480,5 @@ Projektuj rozwiązania, które będą działały również za 5–10 lat.
 Każda decyzja powinna wspierać długoterminowy rozwój Smart BioSystem.
 
 Jeżeli istnieją wątpliwości, zatrzymaj implementację i przedstaw propozycję rozwiązania zamiast podejmować decyzję samodzielnie.
+
+

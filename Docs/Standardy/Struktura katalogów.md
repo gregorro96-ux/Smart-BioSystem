@@ -1,4 +1,10 @@
-📗 Smart BioSystem
+﻿📗 Smart BioSystem
+│
+├─── 📂 .git → (lokalne repozytorium Git i historia projektu; nie jest elementem runtime SBS)
+│
+├─── 📄 .gitattributes → (standard zakończeń linii i obsługa plików binarnych)
+│
+├─── 📄 .gitignore → (reguły wykluczania sekretów, logów, backupów i plików tymczasowych)
 │
 ├─── 📂 AI → (główny katalog sztucznej inteligencji)
 │
@@ -12,9 +18,13 @@
 │    │   
 │    ├── 📘 Compatibility → (warstwa zgodności z urządzeniami i systemami)  
 │    │
+│    ├── 📘 Config → (konfiguracja AquaCore OS i środowisk pracy)
+│    │
 │    ├── 📘 Core → (główne komponenty i funkcje AquaCore OS)   
 │    │
 │    ├── 📘 Database → (komunikacja z bazą danych i operacje na danych)
+│    │
+│    ├── 📘 Errors → (standard błędów i wyjątków AquaCore OS)
 │    │
 │    ├── 📘 Engines → (silniki odpowiedzialne za symulacje i logikę środowiska)
 │    │    │
@@ -244,3 +254,73 @@
 ├─── 📂 Tests → (środowisko testowe i walidacja funkcji)
 │     
 └─── 📂 Tools → (narzędzia serwisowe i pomocnicze)
+
+==================================================
+
+# Standard pracy z Git
+
+Repozytorium Git znajduje się w głównym katalogu projektu Smart BioSystem na dysku `S:`.
+
+Główna gałąź robocza:
+
+* `development`
+
+## Pliki konfiguracyjne Git w katalogu głównym
+
+* `.gitignore` → reguły wykluczania plików lokalnych, sekretów, logów, backupów, zależności i artefaktów builda.
+* `.gitattributes` → reguły zakończeń linii oraz obsługi plików binarnych.
+
+## Standard przed commitem
+
+Każda zmiana powinna być sprawdzona w następującej kolejności:
+
+1. Sprawdzenie stanu repozytorium:
+
+```powershell
+git status
+```
+
+2. Sprawdzenie zmian roboczych:
+
+```powershell
+git diff
+```
+
+3. Selektywne dodanie konkretnych plików:
+
+```powershell
+git add <plik>
+```
+
+4. Sprawdzenie zmian przygotowanych do commita:
+
+```powershell
+git diff --cached
+```
+
+5. Wykonanie małego, tematycznego commita:
+
+```powershell
+git commit -m "typ(zakres): opis"
+```
+
+## Zasady bezpieczeństwa
+
+`git add .` nie powinno być używane rutynowo przy kolejnych zmianach.
+
+Do commita należy dodawać tylko pliki związane z bieżącym zadaniem.
+
+Poza repozytorium muszą pozostać:
+
+* hasła,
+* tokeny,
+* klucze prywatne,
+* pliki `.env`,
+* prywatna konfiguracja,
+* dokumenty zawierające dane dostępowe.
+
+Standard zakończeń linii:
+
+* LF dla kodu i dokumentacji,
+* CRLF dla plików `.bat`, `.cmd` i `.ps1`.
+
