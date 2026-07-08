@@ -17,6 +17,7 @@ use AquaCoreOS\Database\Commands\DatabaseStatusCommand;
 use AquaCoreOS\Database\Commands\DatabaseTestCommand;
 use AquaCoreOS\Logging\Commands\LogsStatusCommand;
 use AquaCoreOS\Logging\Logger;
+use AquaCoreOS\Security\Commands\SecurityContextCommand;
 use AquaCoreOS\Security\Commands\SecurityStatusCommand;
 use AquaCoreOS\Security\NullAuthProvider;
 use AquaCoreOS\System\BootSequence;
@@ -62,8 +63,9 @@ final class Bootstrap
         $commands->register(new MqttTestCommand($logger, $configuration));
         $commands->register(new MqttStatusCommand($logger, $configuration));
         $commands->register(new ApiStatusCommand($logger));
-        $commands->register(new ApiHealthCommand($logger, $configuration, $systemStatus, $moduleStatusProvider, $bootSequence));
+        $commands->register(new ApiHealthCommand($logger, $configuration, $systemStatus, $moduleStatusProvider, $bootSequence, $authProvider));
         $commands->register(new SecurityStatusCommand($logger, $authProvider));
+        $commands->register(new SecurityContextCommand($logger, $authProvider));
         $commands->register(new LogsStatusCommand($logger, $logFile));
         $commands->register(new TestsRunCommand($logger, $rootPath));
 

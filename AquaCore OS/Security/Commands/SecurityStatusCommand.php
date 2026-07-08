@@ -40,6 +40,9 @@ final class SecurityStatusCommand implements CommandInterface
         echo 'module: Security' . PHP_EOL;
         echo 'state: ' . ModuleState::NOT_IMPLEMENTED . PHP_EOL;
         echo 'authenticated: ' . ($user->authenticated() ? 'true' : 'false') . PHP_EOL;
+        echo 'roles: ' . implode(',', $user->roles()) . PHP_EOL;
+        echo 'permissions: ' . implode(',', $user->permissions()) . PHP_EOL;
+        echo 'session_active: ' . ($user->session()->active() ? 'true' : 'false') . PHP_EOL;
         echo 'login: not implemented' . PHP_EOL;
 
         return 0;

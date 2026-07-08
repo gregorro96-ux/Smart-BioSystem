@@ -154,7 +154,7 @@ Warstwa Security posiada szkielet pod przyszłe logowanie:
 
 Na tym etapie użytkownik jest zawsze anonimowy.
 
-Logowanie nie jest jeszcze zaimplementowane.
+Security posiada fundament: UserContext, role, uprawnienia i SessionContext, ale logowanie nie jest jeszcze zaimplementowane.
 
 ## Boot Sequence
 

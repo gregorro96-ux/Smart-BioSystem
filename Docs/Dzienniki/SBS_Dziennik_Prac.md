@@ -2109,3 +2109,34 @@ Zakres bezpieczeństwa:
 Wniosek:
 
 AquaCore OS posiada pierwszy stabilny kształt payloadu health/status, który może być później użyty przez prywatne API, AquaCore UI i AquaCore Monitor.
+---
+
+## SECURITY FOUNDATION
+
+Przygotowano fundament modułu Security bez implementowania logowania użytkownika.
+
+Wykonano:
+
+- doprecyzowano `UserContext`,
+- dodano typy ról w `UserRole`,
+- dodano podstawowe uprawnienia w `Permission`,
+- dodano `SessionContext` jako szkielet przyszłej sesji,
+- dodano komendę `security:context`,
+- rozszerzono `security:status`,
+- dodano anonimowy kontekst Security do payloadu `api:health`,
+- rozszerzono smoke test CLI,
+- zaktualizowano dokumentację CLI, README i dokumentację rdzenia AquaCore OS.
+
+Zakres bezpieczeństwa:
+
+- użytkownik nadal jest anonimowy,
+- nie dodano formularza logowania,
+- nie dodano endpointów HTTP,
+- nie dodano sesji runtime,
+- nie dodano haseł w kodzie,
+- nie połączono Security z bazą danych,
+- nie zmieniono struktury tabel.
+
+Wniosek:
+
+AquaCore OS posiada pierwszy model kontekstu bezpieczeństwa, który może być później użyty przez logowanie, prywatne API, AquaCore UI i AquaCore Monitor.

@@ -186,6 +186,20 @@ Pokazuje status modułu Security.
 
 Na tym etapie użytkownik pozostaje anonimowy, a logowanie nie jest zaimplementowane.
 
+### security:context
+
+Pokazuje aktualny kontekst bezpieczeństwa bez logowania użytkownika.
+
+Obecny kontekst jest anonimowy i zawiera:
+
+- `authenticated`,
+- `user_id_present`,
+- `roles`,
+- `permissions`,
+- `session`.
+
+Komenda nie tworzy sesji, nie loguje użytkownika, nie odczytuje haseł i nie łączy się z bazą danych.
+
 ## Komendy Tests
 
 ### tests:run

@@ -29,6 +29,7 @@ php "AquaCore OS\aquacore.php" mqtt:test
 php "AquaCore OS\aquacore.php" api:status
 php "AquaCore OS\aquacore.php" api:health
 php "AquaCore OS\aquacore.php" security:status
+php "AquaCore OS\aquacore.php" security:context
 php "AquaCore OS\aquacore.php" tests:run
 ```
 
@@ -49,7 +50,7 @@ php "AquaCore OS\aquacore.php" tests:run
 - MariaDB posiada pierwszy realny test połączenia przez `database:test`.
 - MQTT posiada pierwszy bezpieczny test połączenia przez `mqtt:test`.
 - API posiada pierwszy prywatny payload health/status przez `api:health`, ale nie uruchamia serwera HTTP i nie posiada publicznych endpointów.
-- Security nie posiada jeszcze logowania.
+- Security posiada anonimowy `UserContext`, role, uprawnienia i szkielet sesji, ale nie posiada jeszcze logowania.
 - NAIDA pozostaje poza zakresem AquaCore OS Core.
 
 ## Git

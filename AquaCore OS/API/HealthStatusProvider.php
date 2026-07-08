@@ -7,6 +7,7 @@ namespace AquaCoreOS\API;
 use AquaCoreOS\Compatibility\MqttConnectionTester;
 use AquaCoreOS\Config\Configuration;
 use AquaCoreOS\Database\MariaDbDatabaseConnection;
+use AquaCoreOS\Security\AuthProviderInterface;
 use AquaCoreOS\System\BootSequence;
 use AquaCoreOS\System\ModuleStatusProvider;
 use AquaCoreOS\System\SystemStatus;
@@ -18,6 +19,7 @@ final class HealthStatusProvider
         private readonly SystemStatus $systemStatus,
         private readonly ModuleStatusProvider $moduleStatusProvider,
         private readonly BootSequence $bootSequence,
+        private readonly AuthProviderInterface $authProvider,
     ) {
     }
 
@@ -46,6 +48,11 @@ final class HealthStatusProvider
                     ],
                     $this->bootSequence->run(),
                 ),
+                'security' => [
+                    'context' => $this->authProvider->currentUser()->toArray(),
+                    'login' => 'not_implemented',
+                    'http_session' => 'not_started',
+                ],
                 'checks' => [
                     'database' => $this->databaseCheck($liveChecks),
                     'mqtt' => $this->mqttCheck($liveChecks),

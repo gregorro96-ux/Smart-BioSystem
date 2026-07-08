@@ -87,7 +87,12 @@ $tests = [
     [
         'name' => 'security status is anonymous',
         'command' => 'security:status',
-        'expected' => ['authenticated: false', 'login: not implemented'],
+        'expected' => ['authenticated: false', 'roles: anonymous', 'session_active: false', 'login: not implemented'],
+    ],
+    [
+        'name' => 'security context is anonymous',
+        'command' => 'security:context',
+        'expected' => ['"authenticated": false', '"roles": [', '"anonymous"', '"session_id_present": false'],
     ],
 ];
 

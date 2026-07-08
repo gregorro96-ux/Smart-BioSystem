@@ -6,6 +6,7 @@ namespace AquaCoreOS\API\Commands;
 
 use AquaCoreOS\API\HealthStatusProvider;
 use AquaCoreOS\Config\Configuration;
+use AquaCoreOS\Security\AuthProviderInterface;
 use AquaCoreOS\Core\CommandInterface;
 use AquaCoreOS\Logging\Logger;
 use AquaCoreOS\System\BootSequence;
@@ -20,6 +21,7 @@ final class ApiHealthCommand implements CommandInterface
         private readonly SystemStatus $systemStatus,
         private readonly ModuleStatusProvider $moduleStatusProvider,
         private readonly BootSequence $bootSequence,
+        private readonly AuthProviderInterface $authProvider,
     ) {
     }
 
@@ -48,6 +50,7 @@ final class ApiHealthCommand implements CommandInterface
             $this->systemStatus,
             $this->moduleStatusProvider,
             $this->bootSequence,
+            $this->authProvider,
         );
 
         echo json_encode($provider->payload($liveChecks)->toArray(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . PHP_EOL;
