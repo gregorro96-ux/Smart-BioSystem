@@ -1,4 +1,4 @@
-﻿# AquaCore OS CLI
+# AquaCore OS CLI
 
 Status: Szkielet diagnostyczny.
 
@@ -44,6 +44,9 @@ Pokazuje podstawowy lokalny health check bez połączenia z bazą i MQTT.
 Uruchamia aktualną sekwencję bootowania.
 
 Na tym etapie zawiera tylko krok konfiguracji.
+CLI pokazuje techniczny wynik bootowania. AquaCore UI i przyszły AquaCore Monitor powinny korzystać z tego samego modelu danych, a nie z osobnej sekwencji przygotowanej wyłącznie na potrzeby interfejsu.
+
+Docelowo wynik `system:boot` powinien wspierać statusy modułów takie jak `Loading`, `OK`, `Warning`, `Error`, `Skipped` i `Locked`.
 
 ### system:modules
 

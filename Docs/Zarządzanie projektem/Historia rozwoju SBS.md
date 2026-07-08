@@ -1,4 +1,4 @@
-﻿==================================================
+==================================================
 HISTORIA ROZWOJU SMART BIOSYSTEM
 ==================================================
 
@@ -232,3 +232,23 @@ AquaCore OS.
 Systemu operacyjnego przeznaczonego do zarządzania, ochrony i rozwoju żywych ekosystemów.
 
 ==================================================
+
+---
+
+## FAZA IV-B - Rozruch, dostęp użytkownika i diagnostyka
+
+Data rozpoczęcia: 2026-07-08
+
+Po uruchomieniu bootowalnego szkieletu AquaCore OS Core rozpoczęto porządkowanie koncepcji wejścia użytkownika do systemu.
+
+Ustalono, że Boot Sequence nie jest dekoracją UI, lecz rzeczywistym procesem rozruchu i diagnostyki AquaCore OS.
+
+AquaCore UI, AquaCore Home i przyszły AquaCore Monitor mają korzystać ze wspólnego modelu statusów modułów.
+
+Rozdzielono koncepcyjnie tryby startu:
+
+- Server Mode,
+- Client Mode,
+- Embedded / Home Mode.
+
+Dopisano kierunek dla logowania, Opiekunów Ekosystemu, uprawnień indywidualnych, operacji zatwierdzanych, wersjonowania oraz changelogów.

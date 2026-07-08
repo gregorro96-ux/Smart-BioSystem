@@ -1,4 +1,4 @@
-﻿=================================================
+=================================================
 SESJA ROBOCZA NR 001
 Data: 15-16.06.2026
 Godzina: xx:xx - xx:xx
@@ -1512,3 +1512,207 @@ Do wykonania osobny commit dokumentacyjny:
 Koniec wpisu.
 
 =================================================
+
+==================
+SESJA ROBOCZA NR 009
+Data: 08.07.2026
+Godzina rozpoczęcia: 14:23
+Autor: Grzegorz / Codex
+Moduł: AquaCore OS / AquaCore UI / Dokumentacja architektoniczna
+Status: W trakcie
+==================
+
+TEMAT SESJI
+
+Audyt nowych ustaleń projektowych dotyczących rozruchu AquaCore OS, ekranu Boot Sequence, trybów startu, logowania, uprawnień, AquaCore Monitor, wersjonowania oraz zasad dalszej pracy.
+
+---
+
+## WYKONANE NA POCZĄTKU
+
+1. Sprawdzono `git status`.
+2. Sprawdzono aktualną gałąź `development`.
+3. Sprawdzono ostatni commit: `7ee68bf feat(core): dodano bootowalny rdzeń AquaCore OS`.
+4. Zweryfikowano, że bieżące zmiany mają charakter dokumentacyjny.
+5. Uruchomiono smoke test CLI AquaCore OS - wynik pozytywny.
+
+---
+
+## USTALENIA
+
+Boot Sequence pozostaje jednym wspólnym mechanizmem rozruchu i diagnostyki AquaCore OS.
+
+AquaCore UI, AquaCore Home i przyszły AquaCore Monitor mają korzystać z tych samych danych statusowych.
+
+Po logowaniu użytkownik przechodzi przez weryfikację sesji, ekran rozruchu klienta i kontrolę usług, a dopiero potem trafia do AquaCore UI, trybu ograniczonego albo ekranu błędu.
+
+Opisano rozdzielenie trybów startu:
+
+- Server Mode,
+- Client Mode,
+- Embedded / Home Mode.
+
+Dopisano koncepcję Opiekuna Ekosystemu, uprawnień indywidualnych, operacji wymagających zatwierdzenia, roli NAIDY, przyszłego AquaCore Monitor oraz wersjonowania AquaCore OS i AquaCore UI.
+
+---
+
+## OGRANICZENIA
+
+Nie implementowano kodu.
+
+Nie zmieniono struktury bazy danych.
+
+Nie dodano endpointów API.
+
+Nie podłączono MariaDB ani MQTT.
+
+Nie wykonano commita.
+
+---
+
+## PORZĄDKOWANIE FOLDERU DOCS
+
+W ramach sesji uporządkowano dokumenty w folderze `Docs` zgodnie z zasadą czytelności i łatwego odnalezienia konkretnego pliku.
+
+Wykonano:
+
+- przeniesiono dokumentację AquaCore UI do `Docs/AquaCore UI/`,
+- przeniesiono decyzje, historię i roadmapę do `Docs/Zarządzanie projektem/`,
+- przeniesiono mapę bazy danych do `Docs/Dokumentacja techniczna/Baza danych/`,
+- przeniesiono dokument MQTT do `Docs/Dokumentacja techniczna/Integracje/`,
+- przeniesiono dokumenty ESP32, urządzeń i elektroniki do `Docs/Dokumentacja techniczna/Urządzenia/`,
+- przeniesiono dokumenty lampy, LED i LightLab do `Docs/Dokumentacja techniczna/Urządzenia/Oświetlenie/`,
+- dodano `Docs/README.md` jako indeks dokumentacji,
+- zaktualizowano standard struktury katalogów i standard porządkowania dokumentów.
+
+Plik lokalny `Docs/hasła.md` pozostawiono bez zmian i bez odczytywania treści.
+
+==================
+SESJA ROBOCZA NR 009 - INTEGRACJA Z GITHUB
+Data: 08.07.2026
+Autor: Grzegorz / Codex
+Moduł: Git / GitHub / Dokumentacja projektu
+Status: Zakończona sukcesem
+==================
+
+## Data
+
+08.07.2026
+
+## Cel
+
+Podłączenie lokalnego repozytorium Smart BioSystem znajdującego się w katalogu:
+
+- `\\Serwer\home\Smart BioSystem`
+
+z nowym repozytorium GitHub:
+
+- `https://github.com/gregorro96-ux/Smart-BioSystem.git`
+
+oraz rozpoczęcie pracy w modelu:
+
+- lokalne repozytorium Git na NAS,
+- zdalne repozytorium GitHub,
+- główna gałąź robocza `development`.
+
+## Wykonane działania
+
+1. Potwierdzono lokalizację lokalnego repozytorium projektu:
+
+   `\\Serwer\home\Smart BioSystem`
+
+2. Sprawdzono aktywną gałąź roboczą:
+
+   `development`
+
+3. Utworzono nowe repozytorium GitHub:
+
+   `https://github.com/gregorro96-ux/Smart-BioSystem.git`
+
+4. Dodano zdalne repozytorium jako `origin`:
+
+   `git remote add origin https://github.com/gregorro96-ux/Smart-BioSystem.git`
+
+5. Wysłano lokalną gałąź `development` na GitHub:
+
+   `git push -u origin development`
+
+6. Git ustawił śledzenie gałęzi:
+
+   `development -> origin/development`
+
+7. Wykonano commit dokumentacyjny:
+
+   `83b4648 Aktualizacja dokumentacji projektu`
+
+8. Wysłano commit na GitHub:
+
+   `git push`
+
+9. Zweryfikowano stan końcowy repozytorium po integracji:
+
+   `Your branch is up to date with 'origin/development'.`
+
+   `nothing to commit, working tree clean`
+
+10. Sprawdzono repozytorium przez integrację GitHub w Codexie:
+
+   - brak pull requestów,
+   - brak failing checks,
+   - brak statusów CI dla aktualnego commita,
+   - repozytorium jest poprawnie podłączone,
+   - projekt pracuje na gałęzi `development`.
+
+## Wynik
+
+Integracja lokalnego repozytorium Smart BioSystem z GitHubem została zakończona pomyślnie.
+
+Repozytorium zdalne `origin` wskazuje na:
+
+- `https://github.com/gregorro96-ux/Smart-BioSystem.git`
+
+Gałąź `development` została wysłana na GitHub i śledzi `origin/development`.
+
+Commit dokumentacyjny `83b4648` znajduje się w lokalnym repozytorium oraz na GitHubie.
+
+## Uwagi
+
+W trakcie pracy pojawiła się pomyłka w komendzie:
+
+```powershell
+git pushgit status
+```
+
+Poprawna forma to dwie osobne komendy:
+
+```powershell
+git push
+git status
+```
+
+GitHub może domyślnie pokazywać gałąź `main`, ale projekt został wysłany na gałąź `development`.
+
+Na stronie GitHuba należy wybrać gałąź `development` albo ustawić ją jako gałąź domyślną repozytorium.
+
+Ostrzeżenia `CRLF -> LF` dotyczyły końców linii w plikach tekstowych i nie zablokowały commita ani pushowania.
+
+Standardowy cykl pracy po integracji:
+
+```powershell
+git status
+git diff
+git add <plik>
+git diff --cached
+git commit -m "Opis zmiany"
+git push
+```
+
+`git add .` może być użyte tylko świadomie przy małych, w pełni sprawdzonych zmianach. Rutynowo preferowane jest selektywne `git add <plik>`, zgodnie ze standardem projektu SBS.
+
+## Wniosek
+
+Smart BioSystem posiada teraz lokalną historię projektu na NAS oraz zdalne repozytorium GitHub.
+
+Od tego momentu GitHub pełni rolę zdalnej kopii historii projektu i punktu synchronizacji gałęzi `development`.
+
+Git i GitHub pozostają narzędziami kontroli wersji oraz współpracy. Nie są elementami runtime Smart BioSystem ani AquaCore OS.

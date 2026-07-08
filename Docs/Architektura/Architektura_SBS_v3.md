@@ -1,4 +1,4 @@
-﻿# SBS (Smart Bio System)
+# SBS (Smart Bio System)
 
 # Architektura Systemu - Full Version v3
 
@@ -43,7 +43,22 @@ Biblioteka wiedzy użytkownika.
 
 Laboratorium kalibracji i diagnostyki oświetlenia.
 
+## Rozruch i diagnostyka
+
+Boot Sequence jest wspólną warstwą rozruchu i diagnostyki AquaCore OS.
+
+AquaCore UI, AquaCore Home i przyszły AquaCore Monitor korzystają z tych samych danych statusowych, zamiast tworzyć osobne mechanizmy.
+
+Tryby startu:
+
+- Server Mode,
+- Client Mode,
+- Embedded / Home Mode.
+
+Client Mode po logowaniu prowadzi użytkownika przez weryfikację sesji, ekran rozruchu klienta i kontrolę usług przed wejściem do AquaCore UI.
+
 ## Kontrola wersji
+
 
 Git jest warstwą kontroli wersji projektu Smart BioSystem.
 

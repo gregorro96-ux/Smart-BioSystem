@@ -1,4 +1,4 @@
-﻿# AGENTS.md
+# AGENTS.md
 
 Version: 2.0
 Project: Smart BioSystem (SBS)
@@ -482,3 +482,22 @@ Każda decyzja powinna wspierać długoterminowy rozwój Smart BioSystem.
 Jeżeli istnieją wątpliwości, zatrzymaj implementację i przedstaw propozycję rozwiązania zamiast podejmować decyzję samodzielnie.
 
 
+
+# Zasady sesji, changelogów i release notes
+
+Każdą większą sesję roboczą rozpoczynaj od sprawdzenia:
+
+1. `git status`
+2. aktualnej gałęzi
+3. ostatnich commitów
+
+Po zakończeniu większej sesji dokumentuj:
+
+- zakres wykonanych prac,
+- zmienione dokumenty lub moduły,
+- wynik testów lub kontroli spójności,
+- informację, czy wykonano commit.
+
+Istotne zmiany techniczne i użytkowe wymagają wpisu w changelogu oraz krótkich release notes, gdy wpływają na użytkownika, administratora albo sposób utrzymania systemu.
+
+AquaCore Monitor, AquaCore UI i AquaCore Home nie tworzą własnego niezależnego źródła prawdy o stanie systemu. Korzystają z danych AquaCore OS: Boot Sequence, statusów modułów, logów oraz przyszłego API status / health.

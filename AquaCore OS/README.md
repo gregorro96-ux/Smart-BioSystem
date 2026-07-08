@@ -1,4 +1,4 @@
-﻿# AquaCore OS
+# AquaCore OS
 
 Minimalny rdzeń startowy systemu AquaCore OS.
 
@@ -76,3 +76,25 @@ git commit -m "typ(zakres): opis"
 `git add .` nie powinno być używane rutynowo.
 
 Sekrety i prywatna konfiguracja muszą pozostawać poza repozytorium.
+
+## Rozruch i przyszły UI
+
+`system:boot` uruchamia techniczną sekwencję bootowania AquaCore OS.
+
+Boot Sequence jest docelowo wspólnym źródłem danych dla:
+
+- diagnostyki CLI,
+- ekranu rozruchu klienta AquaCore UI,
+- paneli AquaCore Home,
+- przyszłego AquaCore Monitor,
+- przyszłego API status / health.
+
+Nie należy tworzyć osobnego mechanizmu statusów wyłącznie dla interfejsu użytkownika.
+
+Docelowe tryby startu:
+
+- Server Mode,
+- Client Mode,
+- Embedded / Home Mode.
+
+Po logowaniu użytkownik przechodzi przez weryfikację sesji, ekran rozruchu klienta oraz kontrolę usług przed wejściem do AquaCore UI.

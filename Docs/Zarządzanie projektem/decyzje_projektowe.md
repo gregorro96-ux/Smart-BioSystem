@@ -957,3 +957,38 @@ Przed commitem należy wykonać kolejno:
 Uwagi:
 
 `git add .` nie powinno być używane rutynowo, ponieważ zwiększa ryzyko przypadkowego dodania plików lokalnych lub prywatnych.
+
+---
+
+## 2026-07-08
+
+### Rozruch AquaCore OS, uprawnienia i wersjonowanie modułów
+
+Decyzja:
+
+Boot Sequence AquaCore OS jest wspólnym mechanizmem rozruchu i diagnostyki systemu.
+
+Powód:
+
+AquaCore UI, AquaCore Home i przyszły AquaCore Monitor muszą prezentować stan systemu na podstawie tych samych danych, które wykorzystuje rdzeń AquaCore OS.
+
+Ustalenia:
+
+* nie tworzy się drugiego niezależnego mechanizmu statusów modułów,
+* Boot Sequence rozwijany jest na bazie `BootSequence`, `BootStepInterface`, `BootStepResult`, `ModuleStatus`, `ModuleState`, `ModuleStatusProvider`, `Logger`, `ErrorCode` oraz przyszłego API status / health,
+* ekran Boot Sequence w UI jest prezentacją rzeczywistego procesu rozruchu,
+* po logowaniu użytkownik trafia najpierw do ekranu rozruchu klienta, a dopiero potem do AquaCore UI, trybu ograniczonego albo ekranu błędu,
+* system rozróżnia Server Mode, Client Mode oraz Embedded / Home Mode,
+* model użytkowników obejmuje Opiekuna Ekosystemu jako osobę odpowiedzialną za konkretny ekosystem,
+* uprawnienia są docelowo indywidualne i przypisane do zakresów działań, nie tylko do ogólnej roli,
+* operacje wpływające na dobrostan organizmów wymagają zatwierdzenia przez uprawnionego użytkownika lub Opiekuna Ekosystemu,
+* NAIDA wspiera decyzje, interpretuje doświadczenie i osiągnięcia, ale nie zastępuje decyzji Opiekuna Ekosystemu,
+* AquaCore Monitor jest przyszłym narzędziem diagnostycznym administratora i serwisu, nie osobnym runtime systemu,
+* AquaCore OS i AquaCore UI mogą mieć osobne wersje, ale muszą być opisane wspólną historią projektu SBS,
+* istotne zmiany techniczne i użytkowe wymagają changeloga oraz release notes.
+
+Ograniczenia:
+
+Na tym etapie decyzja ma charakter dokumentacyjny i architektoniczny.
+
+Nie implementuje logowania, AquaCore Monitor, endpointów API, połączeń MariaDB, połączeń MQTT ani zmian w bazie danych.

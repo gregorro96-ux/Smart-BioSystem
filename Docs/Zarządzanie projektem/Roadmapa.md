@@ -144,3 +144,20 @@ ETAP 17
 BEOS
 
 Biological Ecosystem Operating System
+
+---
+
+AKTUALIZACJA 2026-07-08
+
+Najbliższy kierunek prac po uruchomieniu bootowalnego szkieletu AquaCore OS Core:
+
+1. Dokończyć commit dokumentacyjny Git.
+2. Uporządkować koncepcję Boot Sequence jako rzeczywistego procesu rozruchu.
+3. Opisać tryby startu: Server Mode, Client Mode, Embedded / Home Mode.
+4. Przygotować standard bezpiecznej konfiguracji lokalnej poza repozytorium.
+5. Podłączyć MariaDB najpierw wyłącznie jako test połączenia.
+6. Podłączyć MQTT najpierw wyłącznie jako test połączenia.
+7. Przygotować prywatny health check API.
+8. Rozpocząć Security od logowania lokalnego, sesji, `UserContext`, ról i indywidualnych uprawnień.
+9. Dopiero później rozwijać runtime automatyzacji, scheduler i silniki środowiskowe.
+10. Równolegle prowadzić changelog i release notes dla AquaCore OS oraz AquaCore UI.

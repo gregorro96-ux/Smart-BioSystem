@@ -82,3 +82,42 @@ git commit -m "typ(zakres): opis"
 Pliki z hasłami, tokenami, kluczami prywatnymi, pliki `.env` i prywatna konfiguracja muszą pozostawać poza repozytorium.
 
 Nie wolno przepisywać sekretów do dokumentacji ani commitów.
+
+## Changelog i release notes
+
+Istotne zmiany w SBS powinny być dokumentowane w trzech poziomach:
+
+1. dziennik prac - szczegółowy przebieg pracy,
+2. changelog - techniczna lista zmian,
+3. release notes - krótki opis wpływu zmiany na użytkownika lub administratora.
+
+Changelog i release notes nie zastępują historii Git.
+
+Git zapisuje dokładny zakres zmian, a dokumentacja wyjaśnia ich sens projektowy.
+
+## Zasady sesji roboczej
+
+Każda większa sesja powinna zawierać:
+
+- datę,
+- godzinę rozpoczęcia i zakończenia,
+- zakres prac,
+- listę zmienionych dokumentów lub modułów,
+- wynik kontroli spójności,
+- informację, czy wykonano commit.
+
+Przed rozpoczęciem kolejnej sesji należy sprawdzić `git status`, aktualną gałąź oraz ostatnie commity.
+
+## Zasada porządkowania dokumentów
+
+Dokumenty w `Docs` należy grupować według tematu, nie według daty utworzenia.
+
+Preferowana kolejność decyzji:
+
+1. Czy dokument dotyczy konkretnego modułu, np. AquaCore OS albo AquaCore UI?
+2. Czy dokument jest decyzją, historią lub planem projektu?
+3. Czy dokument jest dokumentacją techniczną bazy, integracji albo urządzenia?
+4. Czy dokument jest dziennikiem, raportem albo standardem?
+5. Jeżeli nie pasuje do żadnej grupy, należy zaproponować nowy folder.
+
+Root folderu `Docs` powinien pozostać lekki i pełnić funkcję wejścia do dokumentacji, a nie miejsca odkładania wszystkich plików.

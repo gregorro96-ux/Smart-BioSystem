@@ -277,3 +277,50 @@ Ustalono:
 AquaCore OS nie posiada jeszcze runtime aplikacyjnego, połączenia z MariaDB, połączenia z MQTT, API endpointów ani logowania użytkownika.
 
 Git pełni rolę kontroli wersji i dziennika zmian projektu, ale nie jest elementem runtime SBS.
+
+--------------------------------------------------
+
+2026-07-08
+
+Ustalenie projektowe:
+
+Boot Sequence AquaCore OS zostaje przyjęty jako wspólna podstawa rozruchu i diagnostyki dla rdzenia systemu, AquaCore UI, AquaCore Home oraz przyszłego AquaCore Monitor.
+
+Ustalono również, że po logowaniu użytkownik nie trafia bezpośrednio do dashboardu, lecz przechodzi przez ekran rozruchu klienta AquaCore OS oraz kontrolę usług krytycznych i opcjonalnych.
+
+Ustalenie ma charakter dokumentacyjny i architektoniczny. Nie wprowadza zmian w kodzie, bazie danych, API, MariaDB ani MQTT.
+
+--------------------------------------------------
+
+2026-07-08
+
+Porządkowanie dokumentacji:
+
+Uporządkowano folder `Docs`, wydzielając dokumenty projektowe, techniczne, UI, bazodanowe, integracyjne i sprzętowe do czytelnych lokalizacji.
+
+Dodano indeks `Docs/README.md`, który wskazuje główne miejsca dokumentacji SBS.
+
+Pliki z hasłami i danymi prywatnymi pozostają poza normalnym obiegiem wersjonowanej dokumentacji.
+
+--------------------------------------------------
+
+2026-07-08
+
+Kamień milowy:
+
+Projekt Smart BioSystem został podłączony do GitHuba.
+
+Ustalono model pracy:
+
+- lokalne repozytorium Git na NAS,
+- zdalne repozytorium GitHub `https://github.com/gregorro96-ux/Smart-BioSystem.git`,
+- główna gałąź robocza `development`,
+- synchronizacja przez `origin/development`.
+
+Wykonano commit dokumentacyjny:
+
+- `83b4648 Aktualizacja dokumentacji projektu`
+
+Po zakończeniu integracji repozytorium było zsynchronizowane z GitHubem, a working tree był czysty.
+
+GitHub jest zdalnym repozytorium projektu i nie jest elementem runtime SBS.

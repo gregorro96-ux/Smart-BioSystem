@@ -1,4 +1,4 @@
-﻿📗 Smart BioSystem
+📗 Smart BioSystem
 │
 ├─── 📂 .git → (lokalne repozytorium Git i historia projektu; nie jest elementem runtime SBS)
 │
@@ -324,3 +324,46 @@ Standard zakończeń linii:
 * LF dla kodu i dokumentacji,
 * CRLF dla plików `.bat`, `.cmd` i `.ps1`.
 
+
+## Dokumentacja zmian, changelog i release notes
+
+Historia Git pokazuje dokładny zakres zmian w plikach.
+
+Dokumentacja projektowa wyjaśnia, dlaczego zmiany zostały wykonane i jaki mają wpływ na SBS.
+
+Przy większych zmianach należy utrzymywać:
+
+- dziennik prac,
+- dziennik projektu,
+- changelog,
+- release notes, jeśli zmiana wpływa na użytkownika lub administratora.
+
+Pliki changelog i release notes mogą zostać wydzielone później, gdy projekt zacznie mieć regularne wersje AquaCore OS i AquaCore UI.
+
+Do tego czasu informacje wersyjne pozostają w dokumentacji projektu i historii Git.
+
+## Aktualny układ folderu Docs
+
+Po porządkowaniu dokumentacji folder `Docs` ma następujące główne obszary:
+
+- `AGENTS.md` - zasady pracy dla Codex i agentów projektu.
+- `README.md` - szybki indeks dokumentacji.
+- `AquaCore OS/` - dokumentacja rdzenia AquaCore OS i CLI.
+- `AquaCore UI/` - dokumentacja interfejsu AquaCore UI.
+- `Architektura/` - dokumentacja architektury SBS.
+- `Dokumentacja techniczna/` - dokumenty techniczne, baza danych, integracje, urządzenia i elektronika.
+- `Dzienniki/` - dzienniki prac i dziennik projektu.
+- `Raporty/` - raporty błędów i incydentów.
+- `Standardy/` - standardy dokumentowania, struktury i pracy z repozytorium.
+- `Zarządzanie projektem/` - decyzje projektowe, historia rozwoju i roadmapa.
+
+Podział `Dokumentacja techniczna`:
+
+- `Baza danych/` - mapa bazy danych i dokumentacja SQL.
+- `Integracje/` - MQTT oraz przyszłe integracje systemowe.
+- `Urządzenia/` - dokumentacja sprzętu i elektroniki.
+- `Urządzenia/Oświetlenie/` - lampy, LED, LightLab i elementy oświetleniowe.
+
+Zasada:
+
+Nowy dokument należy umieścić w folderze tematycznym. Jeżeli dokument nie pasuje do żadnego istniejącego folderu, najpierw należy zaproponować nowy folder, a dopiero potem przenosić pliki.

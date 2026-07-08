@@ -621,3 +621,107 @@ Po zakończeniu prac serwisowych NAIDA informuje użytkownika o otrzymaniu rapor
 Dobrostan organizmów i stabilność ekosystemu są ważniejsze niż wygoda użytkownika.
 
 ==================================================
+
+==================================================
+
+# Ustalenia po audycie AquaCore OS - 2026-07-08
+
+## Przepływ po logowaniu
+
+Użytkownik w klasycznym Client Mode nie przechodzi bezpośrednio z ekranu logowania do dashboardu.
+
+Docelowy przepływ:
+
+```text
+Logowanie
+↓
+Weryfikacja sesji i uprawnień
+↓
+Ekran rozruchu klienta AquaCore OS
+↓
+Kontrola usług krytycznych i opcjonalnych
+↓
+AquaCore UI
+albo
+tryb ograniczony
+albo
+ekran błędu
+```
+
+Ekran rozruchu klienta korzysta z rzeczywistych danych AquaCore OS: `BootSequence`, `BootStepResult`, `ModuleStatus`, `ModuleState`, logów oraz przyszłych danych API status / health.
+
+Nie tworzy się osobnego mechanizmu Boot Sequence tylko dla UI.
+
+## Tryby startu UI
+
+AquaCore UI musi rozróżniać:
+
+- Client Mode - pełny interfejs po logowaniu użytkownika,
+- Embedded / Home Mode - uproszczony start panelu AquaCore Home,
+- tryb ograniczony - dostęp do części funkcji, gdy usługi opcjonalne nie są gotowe,
+- ekran błędu - blokada wejścia, gdy usługa krytyczna nie działa.
+
+## Ekran blokady i logowania
+
+Ekran logowania jest pierwszym punktem kontaktu użytkownika z AquaCore OS.
+
+Docelowo powinien obsługiwać:
+
+- logowanie lokalne,
+- wybór języka,
+- konto Demo,
+- komunikat o stanie systemu,
+- przejście do ekranu rozruchu klienta po poprawnej weryfikacji.
+
+## Opiekunowie Ekosystemu i uprawnienia
+
+Model użytkowników powinien rozróżniać zwykłe konto użytkownika oraz Opiekuna Ekosystemu.
+
+Opiekun Ekosystemu to osoba odpowiedzialna za konkretny ekosystem, jego dobrostan, decyzje pielęgnacyjne i zgodę na działania o podwyższonym ryzyku.
+
+Uprawnienia powinny być indywidualne, a nie wyłącznie oparte na globalnej roli.
+
+Przykładowe zakresy uprawnień:
+
+- podgląd danych,
+- zmiana ustawień,
+- sterowanie urządzeniami,
+- zatwierdzanie działań ryzykownych,
+- dostęp do diagnostyki,
+- dostęp do AquaCore Monitor.
+
+## Operacje wymagające zatwierdzenia
+
+Działania mogące wpłynąć na dobrostan organizmów powinny wymagać świadomego zatwierdzenia przez uprawnionego użytkownika lub Opiekuna Ekosystemu.
+
+Przykłady:
+
+- zmiana krytycznych parametrów środowiska,
+- uruchomienie automatyzacji o dużym wpływie,
+- operacje serwisowe,
+- zdalna pomoc,
+- działania rekomendowane przez NAIDĘ, jeśli mogą zmienić warunki życia.
+
+## Doświadczenie, osiągnięcia i NAIDA
+
+Doświadczenie użytkownika i osiągnięcia mają wzmacniać odpowiedzialną opiekę nad ekosystemem, a nie tworzyć rywalizację kosztem organizmów.
+
+NAIDA może pomagać interpretować doświadczenia użytkownika, historię decyzji i osiągnięcia, ale nie zastępuje decyzji Opiekuna Ekosystemu.
+
+## AquaCore Monitor
+
+AquaCore Monitor jest przyszłym narzędziem diagnostycznym dla administratorów i serwisu.
+
+Monitor powinien korzystać z tych samych danych co Boot Sequence, `system:modules`, logi oraz przyszłe endpointy status / health.
+
+AquaCore Monitor nie jest dostępem dla zwykłego użytkownika i nie powinien mieć własnego niezależnego źródła prawdy o stanie systemu.
+
+## Wersjonowanie, changelog i release notes
+
+AquaCore OS i AquaCore UI powinny być wersjonowane osobno, ale zgodnie z jedną historią projektu SBS.
+
+Każda istotna zmiana użytkowa lub techniczna powinna mieć:
+
+- wpis w dokumentacji projektu,
+- wpis w changelogu,
+- krótkie release notes dla użytkownika lub administratora, jeśli zmiana wpływa na obsługę systemu.

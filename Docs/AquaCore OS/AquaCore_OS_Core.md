@@ -1,4 +1,4 @@
-﻿# AquaCore OS Core
+# AquaCore OS Core
 
 Status: Bootowalny szkielet techniczny po pierwszym commicie Git.
 
@@ -135,6 +135,75 @@ System posiada pierwszy szkielet boot sequence:
 - BootStepInterface,
 - BootStepResult,
 - ConfigurationBootStep.
+Boot Sequence jest docelowo rzeczywistym procesem rozruchu AquaCore OS, a nie osobną animacją interfejsu.
+
+Zasady rozwoju:
+
+- każdy krok bootowania wykonuje rzeczywisty moduł systemu,
+- lista kroków bootowania jest dynamiczna,
+- wynik bootowania pochodzi z danych systemowych, a nie z ręcznie przygotowanej sekwencji UI,
+- AquaCore UI i przyszły AquaCore Monitor korzystają z tych samych danych diagnostycznych,
+- nie tworzy się drugiego niezależnego mechanizmu statusów modułów.
+
+Obecny stan techniczny:
+
+- `BootSequence` uruchamia zarejestrowane kroki,
+- `BootStepInterface` definiuje kontrakt kroku,
+- `BootStepResult` zwraca nazwę kroku, wynik powodzenia i komunikat,
+- aktualnie zarejestrowany jest krok `ConfigurationBootStep`.
+
+Docelowy model statusów rozruchu powinien obsługiwać co najmniej:
+
+- Loading,
+- OK,
+- Warning,
+- Error,
+- Skipped,
+- Locked.
+
+Rozszerzanie statusów musi wykorzystywać istniejące elementy:
+
+- BootSequence,
+- BootStepInterface,
+- BootStepResult,
+- ModuleStatus,
+- ModuleState,
+- ModuleStatusProvider,
+- Logger,
+- ErrorCode,
+- przyszłe API status / health.
+
+Ekran Boot Sequence w AquaCore UI powinien prezentować wynik tego samego procesu, który może być uruchomiony diagnostycznie przez CLI.
+
+## Tryby uruchamiania
+
+AquaCore OS musi rozdzielać koncepcyjnie trzy tryby startu:
+
+1. Server Mode - start rdzenia na serwerze SBS lub SBS Hub.
+2. Client Mode - start użytkownika po logowaniu w AquaCore UI.
+3. Embedded / Home Mode - start panelu AquaCore Home lub urządzenia dostępowego.
+
+Server Mode odpowiada za uruchomienie usług systemowych, konfiguracji, diagnostyki i przyszłych warstw runtime.
+
+Client Mode nie powinien prowadzić użytkownika bezpośrednio z logowania do dashboardu. Docelowy przepływ:
+
+```text
+Logowanie
+↓
+Weryfikacja sesji i uprawnień
+↓
+Ekran rozruchu klienta AquaCore OS
+↓
+Kontrola usług krytycznych i opcjonalnych
+↓
+AquaCore UI
+albo
+tryb ograniczony
+albo
+ekran błędu
+```
+
+Embedded / Home Mode korzysta z tego samego modelu statusów, ale może prezentować uproszczony wynik rozruchu dopasowany do panelu ściennego lub urządzenia mobilnego.
 
 ## Błędy i logi
 

@@ -1,4 +1,4 @@
-﻿# SBS (Smart Bio System)
+# SBS (Smart Bio System)
 
 # Architektura Systemu - Full Version v2
 
@@ -435,7 +435,38 @@ Internet oraz SBS Cloud stanowią rozszerzenie możliwości systemu, a nie warun
 
 ==================================================
 
+==================================================
+
+# Rozruch AquaCore OS i tryby pracy
+
+Boot Sequence AquaCore OS jest częścią runtime systemu, a nie wyłącznie efektem wizualnym.
+
+Źródłem prawdy dla rozruchu i diagnostyki są:
+
+* BootSequence,
+* BootStepInterface,
+* BootStepResult,
+* ModuleStatus,
+* ModuleState,
+* ModuleStatusProvider,
+* Logger,
+* ErrorCode,
+* przyszłe API status / health.
+
+AquaCore UI, AquaCore Home i przyszły AquaCore Monitor korzystają z tych samych danych diagnostycznych.
+
+Nie tworzy się drugiego niezależnego mechanizmu statusów modułów.
+
+Tryby startu:
+
+* Server Mode - start rdzenia AquaCore OS na serwerze SBS lub SBS Hub,
+* Client Mode - start użytkownika po logowaniu i weryfikacji uprawnień,
+* Embedded / Home Mode - start panelu AquaCore Home albo urządzenia dostępowego.
+
+Po logowaniu użytkownik przechodzi przez ekran rozruchu klienta AquaCore OS. Dopiero po kontroli usług krytycznych i opcjonalnych system kieruje go do AquaCore UI, trybu ograniczonego albo ekranu błędu.
+
 # Kontrola wersji
+
 
 Rola:
 
