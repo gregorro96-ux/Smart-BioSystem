@@ -39,6 +39,7 @@ final class ConfigLoader
                 (int) ($database['port'] ?? 3306),
                 (string) ($database['database'] ?? 'sbs'),
                 (string) ($database['username'] ?? 'aquacore'),
+                (string) ($database['password'] ?? ''),
             ),
             new MqttConfig(
                 (bool) ($mqtt['configured'] ?? false),

@@ -215,3 +215,34 @@ Lokalny plik `aquacore.local.php` może zawierać prywatne hosty, nazwy użytkow
 Loader scala konfigurację rekurencyjnie. Oznacza to, że lokalny plik może nadpisać tylko wybrane pola, bez kopiowania całej konfiguracji bazowej.
 
 Na tym etapie loader nie wykonuje połączenia z MariaDB ani MQTT.
+
+## MariaDB - lokalna konfiguracja testu połączenia
+
+Pierwszy test połączenia MariaDB korzysta z lokalnego override konfiguracji.
+
+Plik lokalny:
+
+- `AquaCore OS/Config/aquacore.local.php`
+
+Minimalne pola Database:
+
+```php
+'database' => [
+    'configured' => true,
+    'host' => 'localhost',
+    'port' => 3306,
+    'database' => 'sbs',
+    'username' => 'local_user',
+    'password' => 'CHANGE_ME',
+],
+```
+
+Zasady:
+
+- prawdziwa wartość `password` nie trafia do repozytorium,
+- publiczny status pokazuje tylko `password_configured`,
+- realny test wymaga rozszerzenia PHP `pdo_mysql`,
+- test połączenia wykonuje wyłącznie `SELECT 1`,
+- test nie wykonuje migracji,
+- test nie zmienia tabel,
+- test nie zapisuje danych.

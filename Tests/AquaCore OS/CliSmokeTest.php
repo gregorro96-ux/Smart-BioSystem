@@ -48,6 +48,11 @@ $tests = [
         'expected' => ['configured: false', 'connection_test: not executed'],
     ],
     [
+        'name' => 'database test skips when not configured',
+        'command' => 'database:test',
+        'expected' => ['database_layer: ready', 'mariadb_connection: skipped', 'schema_changes: none'],
+    ],
+    [
         'name' => 'mqtt status does not connect',
         'command' => 'mqtt:status',
         'expected' => ['configured: false', 'connection_test: not executed'],

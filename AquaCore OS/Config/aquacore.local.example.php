@@ -11,6 +11,7 @@ return [
         'port' => 3306,
         'database' => 'sbs_example',
         'username' => 'example_user',
+        'password' => 'CHANGE_ME',
     ],
 
     'mqtt' => [

@@ -85,7 +85,22 @@ Dostępne komendy:
 
 Warstwa Database posiada szkielet konfiguracji i statusu.
 
-Nie wykonuje jeszcze połączenia z MariaDB.
+Posiada pierwszy bezpieczny test połączenia z MariaDB uruchamiany przez:
+
+- `database:test`.
+
+Test połączenia:
+
+- wykonuje się tylko wtedy, gdy `database.configured` ma wartość `true`,
+- używa lokalnej konfiguracji poza repozytorium,
+- wymaga rozszerzenia PHP `pdo_mysql`,
+- wykonuje wyłącznie techniczne `SELECT 1`,
+- nie wykonuje migracji,
+- nie zmienia tabel,
+- nie zapisuje danych,
+- nie wypisuje hasła w terminalu ani logach.
+
+Jeżeli baza nie jest skonfigurowana, test kończy się statusem `skipped`.
 
 Nie zmienia struktury bazy danych.
 

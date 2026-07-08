@@ -92,9 +92,15 @@ Nie wykonuje połączenia z MariaDB.
 
 ### database:test
 
-Pokazuje gotowość szkieletu Database.
+Uruchamia pierwszy bezpieczny test połączenia z MariaDB.
 
-Nie wykonuje połączenia z MariaDB.
+Jeżeli `database.configured` ma wartość `false`, test nie wykonuje połączenia i zwraca status `skipped`.
+
+Jeżeli `database.configured` ma wartość `true`, komenda wykonuje tylko techniczny test `SELECT 1`.
+
+Do realnego testu połączenia wymagane jest rozszerzenie PHP `pdo_mysql`.
+
+Komenda nie wykonuje migracji, nie zmienia tabel, nie zapisuje danych i nie pokazuje hasła.
 
 ## Komendy MQTT
 

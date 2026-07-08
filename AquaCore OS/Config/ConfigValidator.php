@@ -27,6 +27,14 @@ final class ConfigValidator
             $messages[] = 'database.host is empty';
         }
 
+        if ($configuration->database()->configured() && $configuration->database()->username() === '') {
+            $messages[] = 'database.username is required when database is configured';
+        }
+
+        if ($configuration->database()->configured() && $configuration->database()->password() === '') {
+            $messages[] = 'database.password is required when database is configured';
+        }
+
         $mqtt = $configuration->mqtt()->toArray();
         if ((int) $mqtt['port'] <= 0) {
             $messages[] = 'mqtt.port is invalid';

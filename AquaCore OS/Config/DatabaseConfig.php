@@ -13,12 +13,43 @@ final class DatabaseConfig
         private readonly int $port,
         private readonly string $database,
         private readonly string $username,
+        private readonly string $password,
     ) {
     }
 
     public function configured(): bool
     {
         return $this->configured;
+    }
+
+    public function driver(): string
+    {
+        return $this->driver;
+    }
+
+    public function host(): string
+    {
+        return $this->host;
+    }
+
+    public function port(): int
+    {
+        return $this->port;
+    }
+
+    public function database(): string
+    {
+        return $this->database;
+    }
+
+    public function username(): string
+    {
+        return $this->username;
+    }
+
+    public function password(): string
+    {
+        return $this->password;
     }
 
     public function toArray(): array
@@ -29,7 +60,8 @@ final class DatabaseConfig
             'host' => $this->host,
             'port' => (string) $this->port,
             'database' => $this->database,
-            'username' => $this->username,
+            'username_configured' => $this->username !== '' ? 'true' : 'false',
+            'password_configured' => $this->password !== '' ? 'true' : 'false',
         ];
     }
 }

@@ -56,7 +56,7 @@ final class Bootstrap
         $commands->register(new SystemVersionCommand($logger));
         $commands->register(new ConfigShowCommand($logger, $configuration));
         $commands->register(new ConfigValidateCommand($logger, $configuration, new ConfigValidator()));
-        $commands->register(new DatabaseTestCommand($logger));
+        $commands->register(new DatabaseTestCommand($logger, $configuration));
         $commands->register(new DatabaseStatusCommand($logger, $configuration));
         $commands->register(new MqttTestCommand($logger));
         $commands->register(new MqttStatusCommand($logger, $configuration));

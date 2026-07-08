@@ -25,7 +25,7 @@ final class ModuleStatusProvider
             new ModuleStatus(
                 'Database',
                 $this->configuration->database()->configured() ? ModuleState::CONFIGURED : ModuleState::NOT_CONFIGURED,
-                'MariaDB connection is not executed by diagnostics.',
+                'MariaDB connection test is available through database:test.',
             ),
             new ModuleStatus(
                 'MQTT',

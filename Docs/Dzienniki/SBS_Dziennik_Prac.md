@@ -1562,6 +1562,39 @@ Nie implementowano kodu.
 
 Nie zmieniono struktury bazy danych.
 
+---
+
+## PIERWSZY TEST POŁĄCZENIA MARIADB
+
+Przygotowano pierwszy bezpieczny test połączenia AquaCore OS z MariaDB.
+
+Wykonano:
+
+- dodano pole `password` do prywatnej konfiguracji Database bez pokazywania go w CLI,
+- dodano bezpieczne flagi `username_configured` i `password_configured`,
+- dodano klasę testu połączenia MariaDB opartą o PDO,
+- podłączono `database:test` do konfiguracji AquaCore OS,
+- dodano przykład `aquacore.local.example.php` z placeholderem `CHANGE_ME`,
+- uzupełniono smoke test CLI.
+
+Zakres bezpieczeństwa:
+
+- bez migracji,
+- bez zmian tabel,
+- bez zapisu danych,
+- bez wypisywania hasła w terminalu,
+- bez czytania plików z hasłami.
+
+Weryfikacja środowiska PHP:
+
+- dostępne: `PDO`,
+- niewidoczne w `php -m`: `pdo_mysql`,
+- do realnego połączenia z MariaDB konieczne będzie włączenie rozszerzenia `pdo_mysql`.
+
+Jeżeli `database.configured` ma wartość `false`, komenda `database:test` kończy się statusem `skipped`.
+
+Jeżeli `database.configured` ma wartość `true`, komenda wykonuje wyłącznie techniczny test `SELECT 1`.
+
 Nie dodano endpointów API.
 
 Nie podłączono MariaDB ani MQTT.
