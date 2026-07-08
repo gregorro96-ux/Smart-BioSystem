@@ -1954,3 +1954,33 @@ Wynik:
 - historia projektu pozostaje czytelna,
 - zmiany merytoryczne dotyczące konfiguracji lokalnej, testu MariaDB i dokumentacji PDO MySQL pozostają zachowane,
 - bieżący wpis w dzienniku prac jest jedyną nową zmianą wymagającą commita.
+---
+
+## WALIDACJA KONFIGURACJI I BEZPIECZNE BŁĘDY MARIADB
+
+Po potwierdzeniu realnego połączenia MariaDB wykonano pierwszy etap utwardzenia diagnostyki konfiguracji i obsługi błędów.
+
+Wykonano:
+
+- dodano bezpieczne pole `diagnostic_code` w wyniku `database:test`,
+- rozróżniono podstawowe przyczyny awarii bez ujawniania sekretów,
+- dodano kody diagnostyczne m.in. `not_configured`, `pdo_mysql_missing`, `connection_unavailable`, `access_denied`, `unknown_database`, `host_not_found`, `server_unavailable`, `pdo_exception`,
+- zachowano ogólny komunikat błędu bez wypisywania pełnej treści wyjątku PDO,
+- dodano przełącznik `AQUACORE_DISABLE_LOCAL_CONFIG=1` dla testów automatycznych,
+- odizolowano smoke test CLI od prywatnego pliku `aquacore.local.php`,
+- zaktualizowano dokumentację CLI i README AquaCore OS.
+
+Weryfikacja:
+
+- sprawdzono składnię zmienionych plików PHP,
+- wykonano smoke test CLI na czystej konfiguracji bazowej,
+- wykonano realny `database:test` z lokalnym override MariaDB,
+- wynik realnego testu: `mariadb_connection: connected`, `diagnostic_code: none`.
+
+Zakres bezpieczeństwa:
+
+- nie odczytywano prywatnego pliku z hasłami,
+- nie wypisywano haseł ani DSN,
+- nie zmieniano struktury bazy danych,
+- nie wykonano migracji,
+- nie wykonano zapisu danych.

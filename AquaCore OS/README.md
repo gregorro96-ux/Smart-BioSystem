@@ -45,7 +45,7 @@ php "AquaCore OS\aquacore.php" tests:run
 
 ## Aktualny zakres
 
-- MariaDB nie jest jeszcze podłączona.
+- MariaDB posiada pierwszy realny test połączenia przez database:test.
 - MQTT nie jest jeszcze podłączone.
 - API nie posiada publicznych endpointów.
 - Security nie posiada jeszcze logowania.
@@ -76,6 +76,14 @@ git commit -m "typ(zakres): opis"
 `git add .` nie powinno być używane rutynowo.
 
 Sekrety i prywatna konfiguracja muszą pozostawać poza repozytorium.
+
+## MariaDB
+
+database:test wykonuje wyłącznie techniczny test SELECT 1.
+
+Komenda zwraca diagnostic_code, który pomaga rozróżnić brak konfiguracji, brak pdo_mysql, niedostępny port, odmowę logowania i brak bazy bez ujawniania sekretów.
+
+Test nie wykonuje migracji, nie zmienia tabel i nie zapisuje danych.
 
 ## Rozruch i przyszły UI
 

@@ -32,11 +32,11 @@ final class MariaDbDatabaseConnection implements DatabaseConnectionInterface
         }
 
         if ($this->configuration->driver() !== 'mysql') {
-            return DatabaseTestResult::failure('Unsupported database driver.');
+            return DatabaseTestResult::failure('Unsupported database driver.', 'unsupported_driver');
         }
 
         if (!extension_loaded('pdo_mysql')) {
-            return DatabaseTestResult::failure('PDO MySQL extension is not available.');
+            return DatabaseTestResult::failure('PDO MySQL extension is not available.', 'pdo_mysql_missing');
         }
 
         try {
@@ -52,8 +52,8 @@ final class MariaDbDatabaseConnection implements DatabaseConnectionInterface
             );
 
             $pdo->query('SELECT 1');
-        } catch (PDOException) {
-            return DatabaseTestResult::failure('MariaDB connection failed.');
+        } catch (PDOException $exception) {
+            return DatabaseTestResult::failure('MariaDB connection failed.', $this->diagnosticCode($exception));
         }
 
         return DatabaseTestResult::success('MariaDB connection successful.');
@@ -67,5 +67,39 @@ final class MariaDbDatabaseConnection implements DatabaseConnectionInterface
             $this->configuration->port(),
             $this->configuration->database(),
         );
+    }
+
+    private function diagnosticCode(PDOException $exception): string
+    {
+        $code = (string) $exception->getCode();
+        $message = strtolower($exception->getMessage());
+
+        if ($code === '1045' || str_contains($message, 'access denied')) {
+            return 'access_denied';
+        }
+
+        if ($code === '1049' || str_contains($message, 'unknown database')) {
+            return 'unknown_database';
+        }
+
+        if ($code === '2005' || str_contains($message, 'unknown mysql server host')) {
+            return 'host_not_found';
+        }
+
+        if (
+            $code === '2002'
+            || str_contains($message, 'connection refused')
+            || str_contains($message, 'actively refused')
+            || str_contains($message, 'timed out')
+            || str_contains($message, 'no connection could be made')
+        ) {
+            return 'connection_unavailable';
+        }
+
+        if ($code === '2006' || str_contains($message, 'server has gone away')) {
+            return 'server_unavailable';
+        }
+
+        return 'pdo_exception';
     }
 }

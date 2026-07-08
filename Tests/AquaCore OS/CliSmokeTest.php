@@ -6,6 +6,8 @@ $rootPath = dirname(__DIR__, 2);
 $entrypoint = $rootPath . DIRECTORY_SEPARATOR . 'AquaCore OS' . DIRECTORY_SEPARATOR . 'aquacore.php';
 $php = PHP_BINARY;
 
+putenv('AQUACORE_DISABLE_LOCAL_CONFIG=1');
+
 $tests = [
     [
         'name' => 'default command shows help',
@@ -50,7 +52,7 @@ $tests = [
     [
         'name' => 'database test skips when not configured',
         'command' => 'database:test',
-        'expected' => ['database_layer: ready', 'mariadb_connection: skipped', 'schema_changes: none'],
+        'expected' => ['database_layer: ready', 'mariadb_connection: skipped', 'diagnostic_code: not_configured', 'schema_changes: none'],
     ],
     [
         'name' => 'mqtt status does not connect',
@@ -114,4 +116,3 @@ if ($failures > 0) {
 }
 
 echo 'All CLI tests passed.' . PHP_EOL;
-

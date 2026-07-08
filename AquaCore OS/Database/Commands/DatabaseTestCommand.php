@@ -40,6 +40,7 @@ final class DatabaseTestCommand implements CommandInterface
 
         echo 'database_layer: ready' . PHP_EOL;
         echo 'mariadb_connection: ' . $result->status() . PHP_EOL;
+        echo 'diagnostic_code: ' . $result->diagnosticCode() . PHP_EOL;
         echo 'message: ' . $result->message() . PHP_EOL;
         echo 'schema_changes: none' . PHP_EOL;
 

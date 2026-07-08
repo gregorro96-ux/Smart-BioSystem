@@ -79,6 +79,10 @@ final class ConfigLoader
      */
     private function localConfigFiles(string $configDirectory): array
     {
+        if (getenv('AQUACORE_DISABLE_LOCAL_CONFIG') === '1') {
+            return [];
+        }
+
         $files = [];
         $defaultLocalConfig = $configDirectory . DIRECTORY_SEPARATOR . 'aquacore.local.php';
 

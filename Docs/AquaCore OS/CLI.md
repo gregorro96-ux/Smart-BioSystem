@@ -102,6 +102,20 @@ Do realnego testu połączenia wymagane jest rozszerzenie PHP `pdo_mysql`.
 
 Komenda nie wykonuje migracji, nie zmienia tabel, nie zapisuje danych i nie pokazuje hasła.
 
+Wynik zawiera bezpieczne pole `diagnostic_code`, które może przyjąć m.in. wartości:
+
+- `none` - połączenie działa,
+- `not_configured` - konfiguracja MariaDB jest wyłączona,
+- `pdo_mysql_missing` - brakuje rozszerzenia PHP `pdo_mysql`,
+- `connection_unavailable` - serwer lub port MariaDB nie odpowiada,
+- `access_denied` - MariaDB odrzuciła logowanie albo host użytkownika,
+- `unknown_database` - wskazana baza danych nie istnieje albo nie jest dostępna,
+- `host_not_found` - nie znaleziono hosta MariaDB,
+- `server_unavailable` - serwer zerwał połączenie,
+- `pdo_exception` - inny błąd PDO bez ujawniania szczegółów.
+
+`diagnostic_code` nie zawiera hasła, pełnego DSN ani treści wyjątku PDO.
+
 ## Komendy MQTT
 
 ### mqtt:status
