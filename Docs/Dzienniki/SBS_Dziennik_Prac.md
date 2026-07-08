@@ -1875,3 +1875,82 @@ Nie wykonano połączenia z MariaDB.
 Nie wykonano połączenia z MQTT.
 
 Nie zmieniono struktury bazy danych.
+
+---
+
+## REALNY TEST POŁĄCZENIA MARIADB
+
+Wykonano pierwszy realny test połączenia AquaCore OS z MariaDB.
+
+Przygotowanie po stronie użytkownika:
+
+- utworzono prywatny plik `AquaCore OS/Config/aquacore.local.php`,
+- wpisano lokalne dane dostępowe MariaDB bez przekazywania ich do Codexa,
+- pozostawiono plik `aquacore.local.php` poza repozytorium Git,
+- potwierdzono, że plik jest ignorowany przez `.gitignore`.
+
+Diagnostyka połączenia:
+
+- początkowo MariaDB nie przyjmowała połączeń TCP/IP,
+- włączono obsługę TCP/IP w MariaDB na Synology,
+- potwierdzono port `3306`,
+- potwierdzono dostępność portu `192.168.0.26:3306`,
+- zweryfikowano, że użytkownik `sbs_user` wymaga dostępu z hosta innego niż `localhost`,
+- dodano / skonfigurowano użytkownika `sbs_user@%` dla bazy `sbs`,
+- nadano uprawnienia do bazy `sbs` na potrzeby środowiska development.
+
+Wynik komendy `database:status`:
+
+```text
+configured: true
+driver: mysql
+host: 192.168.0.26
+port: 3306
+database: sbs
+username_configured: true
+password_configured: true
+connection_test: not executed
+database_layer: ready
+```
+
+Wynik komendy `database:test`:
+
+```text
+mariadb_connection: connected
+message: MariaDB connection successful.
+schema_changes: none
+```
+
+Wniosek:
+
+AquaCore OS potrafi wykonać pierwszy techniczny test połączenia z MariaDB przez PDO MySQL.
+
+Zakres bezpieczeństwa:
+
+- nie odczytywano plików z hasłami,
+- nie wypisywano hasła w terminalu,
+- nie commitowano prywatnej konfiguracji,
+- nie wykonano migracji,
+- nie zmieniono tabel,
+- nie wykonano zapisu danych w bazie.
+
+---
+
+## PORZĄDKOWANIE HISTORII GIT PO TEŚCIE MARIADB
+
+Po wcześniejszym nieporozumieniu dotyczącym zakresu zmian technicznych powstała lokalna para commitów typu `Revert` i `Reapply`.
+
+Ponieważ GitHub zawierał już ostatni poprawny stan merytoryczny, a lokalne commity nie wnosiły różnic względem `origin/development`, uporządkowano lokalną historię:
+
+- ustawiono lokalną gałąź `development` z powrotem na `origin/development`,
+- usunięto sześć lokalnych commitów porządkowych `Revert/Reapply`,
+- usunięto stary stash konfliktowy,
+- potwierdzono pustą listę stash,
+- potwierdzono czysty working tree.
+
+Wynik:
+
+- lokalna gałąź `development` jest zgodna z `origin/development`,
+- historia projektu pozostaje czytelna,
+- zmiany merytoryczne dotyczące konfiguracji lokalnej, testu MariaDB i dokumentacji PDO MySQL pozostają zachowane,
+- bieżący wpis w dzienniku prac jest jedyną nową zmianą wymagającą commita.
