@@ -992,3 +992,23 @@ Ograniczenia:
 Na tym etapie decyzja ma charakter dokumentacyjny i architektoniczny.
 
 Nie implementuje logowania, AquaCore Monitor, endpointów API, połączeń MariaDB, połączeń MQTT ani zmian w bazie danych.
+
+---
+
+### Rozdzielenie prac nad AquaCore OS i AquaCore UI
+
+Decyzja:
+
+Prace nad AquaCore UI zostaną rozpoczęte w osobnym wątku / osobnej konwersacji dopiero po doprowadzeniu AquaCore OS do stabilnie działającej wersji.
+
+Powód:
+
+AquaCore OS jest fundamentem runtime całego SBS. Mieszanie prac nad OS i UI w jednej długiej konwersacji zwiększa ryzyko utraty czytelności, rozmycia kontekstu i pomylenia decyzji architektonicznych z decyzjami interfejsu.
+
+Ustalenia:
+
+* najpierw doprowadzić AquaCore OS do stabilnej, działającej wersji,
+* w bieżącym wątku koncentrować się na AquaCore OS, konfiguracji, MariaDB, MQTT, API, Security i runtime,
+* AquaCore UI rozwijać później w osobnym wątku projektowym,
+* dokumentację UI można utrzymywać pomocniczo, ale bez rozpoczynania właściwej implementacji UI przed stabilizacją OS,
+* osobny wątek UI ma rozpocząć się od podsumowania aktualnego stanu AquaCore OS i jasnego kontraktu danych/API dla interfejsu.

@@ -1758,3 +1758,33 @@ Dodano dokument:
 - `Docs/Standardy/Standard konfiguracji lokalnej.md`
 
 Nie zmieniano kodu AquaCore OS, konfiguracji runtime, MariaDB ani MQTT.
+
+---
+
+## PRZERWA W SESJI
+
+Godzina przerwy: 15:27
+Godzina końca przerwy: 17:46
+Czas trwania przerwy: 2 godziny 19 minut
+
+Status przed przerwą:
+
+- dokumentacja standardu konfiguracji lokalnej została przygotowana,
+- commit `e9a9e6b docs(config): dodano standard konfiguracji lokalnej` został wykonany,
+- zmiany zostały wypchnięte na GitHub,
+- gałąź `development` jest zsynchronizowana z `origin/development`,
+- working tree był czysty po zakończeniu pushowania.
+
+Po przerwie następny planowany krok:
+
+- przygotować schemat ładowania konfiguracji bez realnego łączenia z MariaDB i MQTT.
+
+---
+
+## DECYZJA ORGANIZACYJNA - OS PRZED UI
+
+Ustalono, że właściwe prace nad AquaCore UI rozpoczną się dopiero po doprowadzeniu AquaCore OS do stabilnie działającej wersji.
+
+AquaCore UI zostanie rozwijany w osobnym wątku / osobnej konwersacji, aby nie mieszać kontekstu prac nad rdzeniem OS z decyzjami dotyczącymi interfejsu użytkownika.
+
+Do tego czasu bieżący wątek pozostaje skoncentrowany na AquaCore OS, konfiguracji, MariaDB, MQTT, API, Security i runtime.

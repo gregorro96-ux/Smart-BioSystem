@@ -161,3 +161,13 @@ Najbliższy kierunek prac po uruchomieniu bootowalnego szkieletu AquaCore OS Cor
 8. Rozpocząć Security od logowania lokalnego, sesji, `UserContext`, ról i indywidualnych uprawnień.
 9. Dopiero później rozwijać runtime automatyzacji, scheduler i silniki środowiskowe.
 10. Równolegle prowadzić changelog i release notes dla AquaCore OS oraz AquaCore UI.
+
+---
+
+ZAŁOŻENIE ORGANIZACYJNE
+
+AquaCore UI nie jest kolejnym aktywnym etapem implementacyjnym przed stabilizacją AquaCore OS.
+
+Najpierw należy doprowadzić AquaCore OS do stabilnie działającej wersji obejmującej konfigurację, MariaDB, MQTT, API, Security i podstawowy runtime.
+
+Dopiero po tym etapie prace nad AquaCore UI zostaną przeniesione do osobnego wątku / osobnej konwersacji, aby nie mieszać kontekstu OS i UI.
