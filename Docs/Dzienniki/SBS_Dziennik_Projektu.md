@@ -343,3 +343,21 @@ Potwierdzono:
 - prywatna konfiguracja pozostaje poza repozytorium.
 
 Zmiany mają charakter technicznego fundamentu diagnostycznego AquaCore OS, a nie wdrożenia produkcyjnego runtime.
+--------------------------------------------------
+
+2026-07-08
+
+Kamień milowy:
+
+Przygotowano pierwszy prywatny kontrakt health/status API dla AquaCore OS.
+
+Ustalono:
+
+- komenda `api:health` zwraca payload JSON zgodny ze standardem `ApiResponse`,
+- tryb domyślny `snapshot` nie wykonuje zewnętrznych testów MariaDB ani MQTT,
+- tryb `--live` wykonuje świadome testy diagnostyczne z aktualnej konfiguracji lokalnej,
+- nie uruchomiono serwera HTTP,
+- nie utworzono publicznych endpointów API,
+- nie wdrożono logowania ani kontroli dostępu.
+
+Zmiana stanowi kontrakt danych pod przyszłe prywatne endpointy oraz AquaCore UI / AquaCore Monitor.

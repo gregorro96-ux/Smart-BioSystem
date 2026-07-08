@@ -80,6 +80,11 @@ $tests = [
         'expected' => ['module: API', 'public_endpoints: none'],
     ],
     [
+        'name' => 'api health shows private payload snapshot',
+        'command' => 'api:health',
+        'expected' => ['"success": true', '"code": "api.health.ok"', '"mode": "snapshot"', '"public_endpoints": "none"', '"http_server": "not_started"'],
+    ],
+    [
         'name' => 'security status is anonymous',
         'command' => 'security:status',
         'expected' => ['authenticated: false', 'login: not implemented'],

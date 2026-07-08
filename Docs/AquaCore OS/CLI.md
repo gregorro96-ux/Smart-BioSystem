@@ -160,6 +160,24 @@ Pokazuje status API.
 
 Router istnieje, ale publiczne endpointy nie są jeszcze zarejestrowane.
 
+### api:health
+
+Pokazuje pierwszy prywatny payload health/status przyszłego API bez uruchamiania serwera HTTP.
+
+Domyślnie komenda działa w trybie `snapshot` i nie wykonuje zewnętrznych testów MariaDB ani MQTT.
+
+Opcjonalny argument `--live` wykonuje świadome testy diagnostyczne MariaDB i MQTT z aktualnej konfiguracji lokalnej.
+
+Komenda zwraca JSON zgodny ze standardem API:
+
+- `success`,
+- `code`,
+- `message`,
+- `data`,
+- `errors`.
+
+`api:health` nie tworzy publicznego endpointu, nie obsługuje logowania, nie wystawia serwera HTTP i nie zmienia bazy ani brokera MQTT.
+
 ## Komendy Security
 
 ### security:status

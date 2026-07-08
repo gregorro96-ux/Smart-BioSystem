@@ -137,6 +137,12 @@ Standard odpowiedzi API:
 
 Router nie posiada jeszcze publicznych endpointów.
 
+API posiada pierwszy prywatny kontrakt health/status dostępny z CLI przez:
+
+- pi:health.
+
+Komenda zwraca payload JSON zgodny ze standardem ApiResponse i nie uruchamia serwera HTTP.
+
 ## Security
 
 Warstwa Security posiada szkielet pod przyszłe logowanie:

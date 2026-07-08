@@ -38,6 +38,8 @@ final class ApiStatusCommand implements CommandInterface
         echo 'state: ' . ModuleState::PLANNED . PHP_EOL;
         echo 'router: ready' . PHP_EOL;
         echo 'public_endpoints: none' . PHP_EOL;
+        echo 'private_health_payload: available' . PHP_EOL;
+        echo 'http_server: not_started' . PHP_EOL;
 
         return 0;
     }

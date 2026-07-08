@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AquaCoreOS\Core;
 
+use AquaCoreOS\API\Commands\ApiHealthCommand;
 use AquaCoreOS\API\Commands\ApiStatusCommand;
 use AquaCoreOS\Compatibility\Commands\MqttStatusCommand;
 use AquaCoreOS\Compatibility\Commands\MqttTestCommand;
@@ -61,6 +62,7 @@ final class Bootstrap
         $commands->register(new MqttTestCommand($logger, $configuration));
         $commands->register(new MqttStatusCommand($logger, $configuration));
         $commands->register(new ApiStatusCommand($logger));
+        $commands->register(new ApiHealthCommand($logger, $configuration, $systemStatus, $moduleStatusProvider, $bootSequence));
         $commands->register(new SecurityStatusCommand($logger, $authProvider));
         $commands->register(new LogsStatusCommand($logger, $logFile));
         $commands->register(new TestsRunCommand($logger, $rootPath));

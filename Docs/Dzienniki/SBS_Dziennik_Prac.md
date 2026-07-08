@@ -2072,3 +2072,40 @@ Wnioski z audytu:
 - MQTT ma realny test połączenia, ale bez publikacji, subskrypcji i runtime,
 - API, Security, AquaCore UI i AquaCore Monitor pozostają kolejnymi etapami,
 - Sesja 009 pozostaje otwarta do czasu podania godziny zakończenia przez Grzegorza.
+---
+
+## PIERWSZY PRYWATNY KONTRAKT API HEALTH / STATUS
+
+Przygotowano pierwszy kontrakt przyszłego prywatnego endpointu health/status API bez uruchamiania serwera HTTP.
+
+Wykonano:
+
+- dodano komendę `api:health`,
+- dodano `HealthStatusProvider`,
+- wykorzystano istniejący standard `ApiResponse`,
+- zebrano w jednym payloadzie status systemu, konfiguracji, modułów, boot sequence oraz diagnostyki Database i MQTT,
+- dodano tryb `snapshot`, który nie wykonuje zewnętrznych połączeń,
+- dodano tryb `--live`, który świadomie wykonuje testy diagnostyczne MariaDB i MQTT,
+- rozszerzono smoke test CLI o `api:health`,
+- zaktualizowano dokumentację CLI, README i dokumentację rdzenia AquaCore OS.
+
+Wynik testów:
+
+- `api:health` zwraca `success: true`, `code: api.health.ok`, `mode: snapshot`,
+- `api:health --live` poprawnie wykonał live diagnostykę MariaDB,
+- MQTT w aktualnym prywatnym configu pozostaje `not_configured`, dlatego live health pokazuje `diagnostic_code: not_configured`,
+- smoke test CLI zakończył się wynikiem `All CLI tests passed`.
+
+Zakres bezpieczeństwa:
+
+- nie uruchomiono serwera HTTP,
+- nie utworzono publicznych endpointów,
+- nie dodano logowania,
+- nie dodano sesji ani uprawnień,
+- nie zmieniono bazy danych,
+- nie publikowano ani nie subskrybowano MQTT,
+- nie ujawniono sekretów.
+
+Wniosek:
+
+AquaCore OS posiada pierwszy stabilny kształt payloadu health/status, który może być później użyty przez prywatne API, AquaCore UI i AquaCore Monitor.
