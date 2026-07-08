@@ -1,6 +1,6 @@
 # Standard konfiguracji lokalnej
 
-Status: Obowiązujący standard dokumentacyjny przed podłączeniem MariaDB i MQTT.
+Status: Obowiązujący standard dokumentacyjny dla lokalnej konfiguracji MariaDB, MQTT i kolejnych usług AquaCore OS.
 
 Cel:
 
@@ -143,7 +143,7 @@ Jeżeli plik ma pozostać lokalny, dopisz go do `.gitignore`.
 
 ## Zasada dla MariaDB i MQTT
 
-Przed realnym podłączeniem MariaDB i MQTT należy przygotować:
+Przed realnym podłączeniem nowej usługi albo rozszerzeniem testów MariaDB/MQTT należy przygotować:
 
 - przykładowe konfiguracje bez sekretów,
 - prywatne lokalne konfiguracje poza repozytorium,
@@ -196,7 +196,7 @@ AquaCore OS może rozwijać konfigurację lokalną tylko w modelu rozdzielenia:
 - repozytorium przechowuje strukturę i przykłady,
 - prywatne środowisko przechowuje prawdziwe dane dostępowe.
 
-Ten standard obowiązuje przed podłączeniem MariaDB, MQTT, API prywatnego i przyszłych usług zewnętrznych.
+Ten standard obowiązuje dla MariaDB, MQTT, API prywatnego i przyszłych usług zewnętrznych. Testowe połączenia MariaDB i MQTT wykonane w Sesji 009 nie zmieniają zasady, że prywatne dane dostępowe pozostają poza repozytorium.
 
 ## Przyjęty schemat dla AquaCore OS
 
@@ -214,7 +214,7 @@ Lokalny plik `aquacore.local.php` może zawierać prywatne hosty, nazwy użytkow
 
 Loader scala konfigurację rekurencyjnie. Oznacza to, że lokalny plik może nadpisać tylko wybrane pola, bez kopiowania całej konfiguracji bazowej.
 
-Na tym etapie loader nie wykonuje połączenia z MariaDB ani MQTT.
+Loader konfiguracji nie wykonuje połączenia z MariaDB ani MQTT. Połączenia testowe wykonują wyłącznie dedykowane komendy diagnostyczne database:test i mqtt:test.
 
 ## MariaDB - lokalna konfiguracja testu połączenia
 
@@ -256,3 +256,31 @@ Zasady:
 - test nie wykonuje migracji,
 - test nie zmienia tabel,
 - test nie zapisuje danych.
+## MQTT - lokalna konfiguracja testu połączenia
+
+Pierwszy test połączenia MQTT korzysta z lokalnego override konfiguracji albo z bezsekretowego pliku wskazanego przez `AQUACORE_CONFIG_LOCAL`.
+
+Plik lokalny:
+
+- `AquaCore OS/Config/aquacore.local.php`
+
+Minimalne pola MQTT:
+
+```php
+'mqtt' => [
+    'configured' => true,
+    'host' => 'example.local',
+    'port' => 1883,
+    'client_id' => 'aquacore-os-diagnostic',
+    'base_topic' => 'mqtt/sbs/diagnostic',
+],
+```
+
+Zasady:
+
+- prawdziwe dane dostępowe MQTT nie trafiają do repozytorium,
+- test połączenia wykonuje wyłącznie `CONNECT`, odczyt `CONNACK` i `DISCONNECT`,
+- test nie publikuje wiadomości,
+- test nie subskrybuje tematów,
+- test nie zmienia konfiguracji brokera,
+- test nie wdraża runtime MQTT.

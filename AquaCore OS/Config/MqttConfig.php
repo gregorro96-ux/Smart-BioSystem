@@ -20,6 +20,26 @@ final class MqttConfig
         return $this->configured;
     }
 
+    public function host(): string
+    {
+        return $this->host;
+    }
+
+    public function port(): int
+    {
+        return $this->port;
+    }
+
+    public function clientId(): string
+    {
+        return $this->clientId;
+    }
+
+    public function baseTopic(): string
+    {
+        return $this->baseTopic;
+    }
+
     public function toArray(): array
     {
         return [

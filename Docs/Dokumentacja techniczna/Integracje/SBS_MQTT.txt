@@ -3,3 +3,34 @@ mqtt/sbs/lamp/cmd
 mqtt/sbs/lamp/telemetry
 mqtt/sbs/lamp/alarm
 mqtt/sbs/lamp/service
+
+==================================================
+STATUS AQUACORE OS - SESJA 009
+==================================================
+
+AquaCore OS posiada pierwszy techniczny test połączenia z brokerem MQTT uruchamiany przez komendę:
+
+mqtt:test
+
+Zakres testu:
+
+- wykonuje CONNECT,
+- odczytuje CONNACK,
+- wykonuje DISCONNECT,
+- nie publikuje wiadomości,
+- nie subskrybuje tematów,
+- nie używa produkcyjnych tematów urządzeń,
+- nie zmienia konfiguracji brokera,
+- nie wdraża runtime MQTT.
+
+Wynik potwierdzonego testu:
+
+broker_connection: connected
+diagnostic_code: none
+publish_operation: not_executed
+subscribe_operation: not_executed
+broker_changes: none
+
+Uwaga:
+
+Tematy produkcyjne pozostają zdefiniowane jako kierunek integracji, ale nie są jeszcze używane przez AquaCore OS runtime.

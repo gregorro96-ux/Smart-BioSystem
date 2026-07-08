@@ -1984,3 +1984,91 @@ Zakres bezpieczeństwa:
 - nie zmieniano struktury bazy danych,
 - nie wykonano migracji,
 - nie wykonano zapisu danych.
+---
+
+## REALNY TEST POŁĄCZENIA MQTT
+
+Wykonano pierwszy rzeczywisty test połączenia AquaCore OS z brokerem MQTT.
+
+Zakres techniczny:
+
+- przeanalizowano istniejące komendy `mqtt:status` i `mqtt:test`,
+- nie tworzono modułu MQTT od nowa,
+- nie dodano zewnętrznej biblioteki MQTT,
+- dodano minimalny tester protokołu MQTT oparty o wbudowane socket/stream PHP,
+- wykonano wyłącznie sekwencję `CONNECT`, odczyt `CONNACK` i `DISCONNECT`,
+- dodano bezpieczne pole `diagnostic_code`,
+- utrzymano smoke test niezależny od prywatnej konfiguracji lokalnej.
+
+Wynik realnego testu MQTT:
+
+```text
+mqtt_layer: ready
+broker_connection: connected
+diagnostic_code: none
+message: MQTT broker connection successful.
+publish_operation: not_executed
+subscribe_operation: not_executed
+broker_changes: none
+```
+
+Wykonano także test błędnej konfiguracji:
+
+```text
+broker_connection: failed
+diagnostic_code: invalid_host
+message: MQTT host is invalid.
+publish_operation: not_executed
+subscribe_operation: not_executed
+broker_changes: none
+```
+
+Zakres bezpieczeństwa:
+
+- nie publikowano wiadomości MQTT,
+- nie subskrybowano tematów MQTT,
+- nie zmieniano konfiguracji brokera,
+- nie wdrożono runtime MQTT,
+- nie dodano obsługi urządzeń,
+- nie dodano retained messages,
+- nie dodano produkcyjnego QoS,
+- nie dodano automatycznego reconnectu,
+- nie integrowano MQTT z Node-RED,
+- nie dodano endpointów API,
+- nie ujawniono loginów, haseł, pełnych URI ani sekretów.
+
+Wniosek:
+
+AquaCore OS potrafi wykonać pierwszy techniczny test połączenia z brokerem MQTT, ale MQTT pozostaje jeszcze poza runtime systemu.
+---
+
+## AUDYT DOKUMENTACJI PO ETAPIE MARIADB I MQTT
+
+Wykonano audyt dokumentacji po zakończeniu technicznych prac nad pierwszymi testami połączeń MariaDB i MQTT.
+
+Zaktualizowano:
+
+- dziennik prac Sesji 009,
+- dziennik projektu,
+- dokumentację AquaCore OS Core,
+- dokumentację CLI,
+- README AquaCore OS,
+- dokumentację integracji MQTT,
+- standard konfiguracji lokalnej,
+- roadmapę,
+- raport błędów.
+
+Sprawdzono bez zmiany decyzji architektonicznych:
+
+- dokumentację architektury SBS,
+- dokumentację architektury SBS v3,
+- decyzje projektowe,
+- dokumentację AquaCore UI,
+- dokumentację Boot Sequence.
+
+Wnioski z audytu:
+
+- MariaDB ma realny test połączenia, ale bez migracji, zmian tabel i zapisu danych,
+- MQTT ma realny test połączenia, ale bez publikacji, subskrypcji i runtime,
+- API, Security, AquaCore UI i AquaCore Monitor pozostają kolejnymi etapami,
+- Sesja 009 pozostaje otwarta do czasu podania godziny zakończenia przez Grzegorza.

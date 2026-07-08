@@ -46,7 +46,7 @@ php "AquaCore OS\aquacore.php" tests:run
 ## Aktualny zakres
 
 - MariaDB posiada pierwszy realny test połączenia przez database:test.
-- MQTT nie jest jeszcze podłączone.
+- MQTT posiada pierwszy bezpieczny test połączenia przez mqtt:test.
 - API nie posiada publicznych endpointów.
 - Security nie posiada jeszcze logowania.
 - NAIDA pozostaje poza zakresem AquaCore OS Core.
@@ -84,6 +84,14 @@ database:test wykonuje wyłącznie techniczny test SELECT 1.
 Komenda zwraca diagnostic_code, który pomaga rozróżnić brak konfiguracji, brak pdo_mysql, niedostępny port, odmowę logowania i brak bazy bez ujawniania sekretów.
 
 Test nie wykonuje migracji, nie zmienia tabel i nie zapisuje danych.
+
+## MQTT
+
+mqtt:test wykonuje wyłącznie techniczny test protokołu MQTT: CONNECT, odczyt CONNACK i DISCONNECT.
+
+Komenda zwraca diagnostic_code, nie publikuje wiadomości, nie subskrybuje tematów i nie zmienia konfiguracji brokera.
+
+Runtime MQTT, obsługa urządzeń, retained messages, QoS produkcyjny i automatyczny reconnect pozostają poza tym etapem.
 
 ## Rozruch i przyszły UI
 

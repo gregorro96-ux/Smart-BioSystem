@@ -60,6 +60,11 @@ $tests = [
         'expected' => ['configured: false', 'connection_test: not executed'],
     ],
     [
+        'name' => 'mqtt test skips when not configured',
+        'command' => 'mqtt:test',
+        'expected' => ['mqtt_layer: ready', 'broker_connection: skipped', 'diagnostic_code: not_configured', 'publish_operation: not_executed', 'subscribe_operation: not_executed', 'broker_changes: none'],
+    ],
+    [
         'name' => 'system boot runs sequence',
         'command' => 'system:boot',
         'expected' => ['configuration: ok - Configuration loaded.'],

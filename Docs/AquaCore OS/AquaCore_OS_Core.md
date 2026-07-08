@@ -48,13 +48,11 @@ Aktualnie zawiera:
 - database,
 - mqtt.
 
-Konfiguracja MariaDB i MQTT istnieje jako szkielet.
+Konfiguracja MariaDB i MQTT posiada już pierwszy bezpieczny tryb testowy.
 
 Na tym etapie:
 
-- MariaDB nie jest podłączona,
-- MQTT nie jest podłączone,
-- żadne połączenie zewnętrzne nie jest wykonywane.
+- MariaDB ma realny test połączenia przez `database:test`,- MQTT ma realny test połączenia przez `mqtt:test`,- testy nie wykonują runtime aplikacyjnego, migracji, publikacji ani subskrypcji produkcyjnych.
 
 ## Komendy CLI
 
@@ -106,9 +104,19 @@ Nie zmienia struktury bazy danych.
 
 ## MQTT
 
-Warstwa MQTT posiada szkielet konfiguracji i statusu.
+Warstwa MQTT posiada szkielet konfiguracji, statusu i pierwszy bezpieczny test połączenia z brokerem MQTT uruchamiany przez:
 
-Nie wykonuje jeszcze połączenia z brokerem MQTT.
+- mqtt:test.
+
+Test połączenia:
+
+- wykonuje się tylko wtedy, gdy mqtt.configured ma wartość 	rue,
+- używa lokalnej konfiguracji poza repozytorium albo bezsekretowego override testowego,
+- wykonuje wyłącznie techniczne CONNECT, odczyt CONNACK i DISCONNECT,
+- nie publikuje wiadomości,
+- nie subskrybuje tematów,
+- nie zmienia konfiguracji brokera,
+- nie uruchamia runtime MQTT.
 
 ## API
 

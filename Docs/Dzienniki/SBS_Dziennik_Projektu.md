@@ -324,3 +324,22 @@ Wykonano commit dokumentacyjny:
 Po zakończeniu integracji repozytorium było zsynchronizowane z GitHubem, a working tree był czysty.
 
 GitHub jest zdalnym repozytorium projektu i nie jest elementem runtime SBS.
+--------------------------------------------------
+
+2026-07-08
+
+Kamień milowy:
+
+AquaCore OS uzyskał pierwsze realne testy połączeń z warstwami infrastruktury lokalnej.
+
+Potwierdzono:
+
+- realny test połączenia z MariaDB przez `database:test`,
+- realny test połączenia z brokerem MQTT przez `mqtt:test`,
+- bezpieczne kody diagnostyczne dla MariaDB i MQTT,
+- brak migracji i brak zmian struktury tabel,
+- brak publikacji i subskrypcji MQTT,
+- brak runtime MQTT,
+- prywatna konfiguracja pozostaje poza repozytorium.
+
+Zmiany mają charakter technicznego fundamentu diagnostycznego AquaCore OS, a nie wdrożenia produkcyjnego runtime.

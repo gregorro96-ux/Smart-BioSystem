@@ -126,9 +126,31 @@ Nie wykonuje połączenia z brokerem.
 
 ### mqtt:test
 
-Pokazuje gotowość szkieletu MQTT.
+Uruchamia pierwszy bezpieczny test połączenia z brokerem MQTT.
 
-Nie wykonuje połączenia z brokerem.
+Jeżeli `mqtt.configured` ma wartość `false`, test nie wykonuje połączenia i zwraca status `skipped`.
+
+Jeżeli `mqtt.configured` ma wartość `true`, komenda wykonuje tylko techniczny test protokołu MQTT: `CONNECT`, odczyt `CONNACK` i `DISCONNECT`.
+
+Komenda nie publikuje wiadomości, nie subskrybuje tematów, nie zmienia konfiguracji brokera i nie zapisuje danych.
+
+Wynik zawiera bezpieczne pole `diagnostic_code`, które może przyjąć m.in. wartości:
+
+- `none` - połączenie działa,
+- `not_configured` - konfiguracja MQTT jest wyłączona,
+- `client_missing` - brakuje wymaganej funkcji klienta socket/stream PHP albo broker odrzucił identyfikator klienta,
+- `invalid_host` - host MQTT jest niepoprawny,
+- `invalid_port` - port MQTT jest niepoprawny,
+- `host_not_found` - nie znaleziono hosta MQTT,
+- `connection_refused` - broker lub firewall odrzucił połączenie,
+- `authentication_failed` - broker odrzucił logowanie,
+- `timeout` - broker nie odpowiedział w czasie,
+- `tls_error` - wystąpił problem TLS/SSL,
+- `protocol_error` - broker zwrócił niepoprawną odpowiedź protokołu,
+- `broker_unavailable` - broker jest niedostępny,
+- `unknown_error` - inny błąd bez ujawniania szczegółów.
+
+`diagnostic_code` nie zawiera loginu, hasła, pełnego URI ani sekretów.
 
 ## Komendy API
 

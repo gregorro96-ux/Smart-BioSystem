@@ -155,8 +155,8 @@ Najbliższy kierunek prac po uruchomieniu bootowalnego szkieletu AquaCore OS Cor
 2. Uporządkować koncepcję Boot Sequence jako rzeczywistego procesu rozruchu.
 3. Opisać tryby startu: Server Mode, Client Mode, Embedded / Home Mode.
 4. Przygotować standard bezpiecznej konfiguracji lokalnej poza repozytorium.
-5. Podłączyć MariaDB najpierw wyłącznie jako test połączenia.
-6. Podłączyć MQTT najpierw wyłącznie jako test połączenia.
+5. Podłączyć MariaDB najpierw wyłącznie jako test połączenia. Status: wykonano w Sesji 009, bez migracji i bez zmian tabel.
+6. Podłączyć MQTT najpierw wyłącznie jako test połączenia. Status: wykonano w Sesji 009, bez publikacji, subskrypcji i runtime MQTT.
 7. Przygotować prywatny health check API.
 8. Rozpocząć Security od logowania lokalnego, sesji, `UserContext`, ról i indywidualnych uprawnień.
 9. Dopiero później rozwijać runtime automatyzacji, scheduler i silniki środowiskowe.
