@@ -167,3 +167,7 @@ Przed commitowaniem zmian w CLI należy wykonać testy, a następnie sprawdzić:
 5. `git commit`
 
 `git add .` nie powinno być używane rutynowo.
+
+`config:show` pokazuje także informację `local_override_loaded`, która mówi, czy AquaCore OS załadował lokalny override konfiguracji.
+
+Komenda nie pokazuje sekretów.

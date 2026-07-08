@@ -30,7 +30,7 @@ $tests = [
     [
         'name' => 'config show exposes environment',
         'command' => 'config:show',
-        'expected' => ['environment: development', 'timezone: Europe/Warsaw'],
+        'expected' => ['environment: development', 'timezone: Europe/Warsaw', 'local_override_loaded: false'],
     ],
     [
         'name' => 'config validate passes',

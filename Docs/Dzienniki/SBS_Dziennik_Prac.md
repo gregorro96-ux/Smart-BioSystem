@@ -1788,3 +1788,24 @@ Ustalono, że właściwe prace nad AquaCore UI rozpoczną się dopiero po doprow
 AquaCore UI zostanie rozwijany w osobnym wątku / osobnej konwersacji, aby nie mieszać kontekstu prac nad rdzeniem OS z decyzjami dotyczącymi interfejsu użytkownika.
 
 Do tego czasu bieżący wątek pozostaje skoncentrowany na AquaCore OS, konfiguracji, MariaDB, MQTT, API, Security i runtime.
+
+---
+
+## SCHEMAT ŁADOWANIA KONFIGURACJI
+
+Przygotowano pierwszy techniczny schemat ładowania konfiguracji AquaCore OS bez wykonywania połączeń z MariaDB i MQTT.
+
+Wykonano:
+
+- dodano obsługę bazowego pliku `AquaCore OS/Config/aquacore.php`,
+- dodano lokalny override `AquaCore OS/Config/aquacore.local.php`,
+- dodano opcjonalny override przez zmienną środowiskową `AQUACORE_CONFIG_LOCAL`,
+- dodano przykład `AquaCore OS/Config/aquacore.local.example.php` bez sekretów,
+- dodano ignorowanie lokalnych plików `*.local.php` w konfiguracji AquaCore OS,
+- dodano informację `local_override_loaded` w bezpiecznym podglądzie konfiguracji.
+
+Nie wykonano połączenia z MariaDB.
+
+Nie wykonano połączenia z MQTT.
+
+Nie zmieniono struktury bazy danych.

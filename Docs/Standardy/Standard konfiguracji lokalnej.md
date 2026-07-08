@@ -197,3 +197,21 @@ AquaCore OS może rozwijać konfigurację lokalną tylko w modelu rozdzielenia:
 - prywatne środowisko przechowuje prawdziwe dane dostępowe.
 
 Ten standard obowiązuje przed podłączeniem MariaDB, MQTT, API prywatnego i przyszłych usług zewnętrznych.
+
+## Przyjęty schemat dla AquaCore OS
+
+AquaCore OS przyjmuje następującą kolejność ładowania konfiguracji:
+
+1. `AquaCore OS/Config/aquacore.php` - bazowa konfiguracja wersjonowana w repozytorium.
+2. `AquaCore OS/Config/aquacore.local.php` - lokalny override ignorowany przez Git.
+3. Plik wskazany przez `AQUACORE_CONFIG_LOCAL` - opcjonalny override poza repozytorium.
+
+Przykład bez sekretów znajduje się w:
+
+- `AquaCore OS/Config/aquacore.local.example.php`
+
+Lokalny plik `aquacore.local.php` może zawierać prywatne hosty, nazwy użytkowników i przyszłe dane dostępowe, dlatego musi pozostać poza repozytorium.
+
+Loader scala konfigurację rekurencyjnie. Oznacza to, że lokalny plik może nadpisać tylko wybrane pola, bez kopiowania całej konfiguracji bazowej.
+
+Na tym etapie loader nie wykonuje połączenia z MariaDB ani MQTT.

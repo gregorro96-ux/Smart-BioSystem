@@ -275,3 +275,32 @@ Proponowane kolejne kroki:
 3. Przygotować właściwą konfigurację połączenia MQTT bez sekretów w repozytorium.
 4. Zaprojektować pierwszy prywatny endpoint health check.
 5. Rozpocząć moduł Security od logowania lokalnego.
+
+## Schemat ładowania konfiguracji
+
+AquaCore OS ładuje konfigurację w bezpiecznej kolejności:
+
+1. Bazowy plik wersjonowany w repozytorium:
+
+   `AquaCore OS/Config/aquacore.php`
+
+2. Lokalny override ignorowany przez Git, jeżeli istnieje:
+
+   `AquaCore OS/Config/aquacore.local.php`
+
+3. Dodatkowy lokalny override wskazany zmienną środowiskową, jeżeli istnieje:
+
+   `AQUACORE_CONFIG_LOCAL`
+
+Plik przykładowy bez sekretów:
+
+- `AquaCore OS/Config/aquacore.local.example.php`
+
+Zasady:
+
+- `aquacore.php` zawiera wartości bazowe bez sekretów,
+- `aquacore.local.example.php` zawiera neutralne przykłady,
+- `aquacore.local.php` jest lokalny i niewersjonowany,
+- konfiguracja lokalna nadpisuje tylko wskazane pola,
+- loader nie wykonuje połączeń z MariaDB ani MQTT,
+- CLI może pokazać, czy lokalny override został załadowany, ale nie może wypisywać haseł ani tokenów.
