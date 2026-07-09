@@ -252,3 +252,28 @@ Rozdzielono koncepcyjnie tryby startu:
 - Embedded / Home Mode.
 
 Dopisano kierunek dla logowania, Opiekunów Ekosystemu, uprawnień indywidualnych, operacji zatwierdzanych, wersjonowania oraz changelogów.
+--------------------------------------------------
+
+KAMIEŃ MILOWY GITHUB I SESJA 009
+
+Data:
+
+08.07.2026
+
+Rezultat:
+
+Projekt Smart BioSystem został podłączony do zdalnego repozytorium GitHub, a Sesja robocza nr 009 zamknęła etap pierwszych fundamentów diagnostycznych AquaCore OS.
+
+Ustalono i wykonano:
+
+• Repozytorium GitHub działa jako zdalna kopia historii projektu.
+• Gałąź `development` jest główną gałęzią roboczą i domyślną gałęzią projektu na GitHubie.
+• MariaDB posiada realny test połączenia bez migracji i bez zmian tabel.
+• MQTT posiada realny test połączenia bez publikacji, subskrypcji i runtime MQTT.
+• API posiada pierwszy prywatny kontrakt `api:health`.
+• Security posiada anonimowy `UserContext`, role, uprawnienia i szkielet sesji.
+• Nie wdrożono logowania, endpointów HTTP ani runtime zapisu danych.
+
+Znaczenie:
+
+Od tego momentu AquaCore OS ma sprawdzony fundament diagnostyczny pod dalsze prace nad konfiguracją, bazą danych, MQTT, API, Security i przyszłym UI.

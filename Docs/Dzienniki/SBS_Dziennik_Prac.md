@@ -1655,13 +1655,13 @@ Wykonano:
 
 Plik lokalny `Docs/hasła.md` pozostawiono bez zmian i bez odczytywania treści.
 
-==================
-SESJA ROBOCZA NR 009 - INTEGRACJA Z GITHUB
-Data: 08.07.2026
-Autor: Grzegorz / Codex
+---
+
+## Integracja z GitHubem
+
+Status: podsekcja Sesji 009, nie osobna sesja robocza.
+
 Moduł: Git / GitHub / Dokumentacja projektu
-Status: Zakończona sukcesem
-==================
 
 ## Data
 
@@ -1758,9 +1758,7 @@ git push
 git status
 ```
 
-GitHub może domyślnie pokazywać gałąź `main`, ale projekt został wysłany na gałąź `development`.
-
-Na stronie GitHuba należy wybrać gałąź `development` albo ustawić ją jako gałąź domyślną repozytorium.
+Gałąź `development` została ustawiona jako domyślna gałąź projektu w repozytorium GitHub.
 
 Ostrzeżenia `CRLF -> LF` dotyczyły końców linii w plikach tekstowych i nie zablokowały commita ani pushowania.
 
@@ -2197,7 +2195,8 @@ Wykonano m.in. następujące commity:
 - `2ad9cf7 feat(database): dodano bezpieczne kody diagnostyczne MariaDB`,
 - `560ebbe feat(mqtt): dodano bezpieczny test połączenia brokera`,
 - `64b7bef feat(api): dodano prywatny payload health status`,
-- `127dd02 feat(security): dodano fundament kontekstu użytkownika`.
+- `127dd02 feat(security): dodano fundament kontekstu użytkownika`,
+- `61ded11 docs(session): zamknięto sesję roboczą 009` - commit dokumentacyjny wykonany 2026-07-09 po formalnym zamknięciu sesji.
 
 ### Stan MariaDB
 
@@ -2243,7 +2242,7 @@ Wykonano m.in. następujące commity:
 
 - Gałąź robocza: `development`.
 - Gałąź jest zsynchronizowana z `origin/development` po commitach technicznych.
-- Po zamknięciu sesji pozostaje do wykonania osobny commit dokumentacyjny zamknięcia Sesji 009.
+- Commit dokumentacyjny zamknięcia Sesji 009 został wykonany jako `61ded11 docs(session): zamknięto sesję roboczą 009`.
 
 ### Bezpieczeństwo
 
